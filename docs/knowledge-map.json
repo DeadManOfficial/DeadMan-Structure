@@ -92,7 +92,8 @@
         "Knowledge_Base/Figma_Design/DESIGN_MANUAL.md",
         "Knowledge_Base/ShadCN_Frontend/FRONTEND_MANUAL.md",
         "Knowledge_Base/Tmux_DevOps/OPS_MANUAL.md",
-        "Knowledge_Base/SuperGemini_Governance/GOVERNANCE_MANUAL.md"
+        "Knowledge_Base/SuperGemini_Governance/GOVERNANCE_MANUAL.md",
+        "Knowledge_Base/Agentic_Engineering/ACT_LEARN_REUSE_PLAYBOOK.md"
       ]
     },
     {
@@ -186,6 +187,12 @@
       "type": "doc",
       "category": "governance",
       "summary": "SHIELDA protocol and context guidance."
+    },
+    {
+      "path": "Knowledge_Base/Agentic_Engineering/ACT_LEARN_REUSE_PLAYBOOK.md",
+      "type": "doc",
+      "category": "manuals",
+      "summary": "Act-Learn-Reuse playbook and external research summary."
     },
     {
       "path": "Knowledge_Base/SuperGemini_Governance/ROUTER_OPTIMIZATION_PROGRESS.md",

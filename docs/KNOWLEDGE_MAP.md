@@ -41,6 +41,7 @@
 - Architecture and governance: SYSTEM_MANIFEST.md, Knowledge_Base/SuperGemini_Governance/*
 - Design and frontend: Knowledge_Base/Figma_Design/DESIGN_MANUAL.md, Knowledge_Base/ShadCN_Frontend/FRONTEND_MANUAL.md
 - Ops guidance: Knowledge_Base/Tmux_DevOps/OPS_MANUAL.md
+- Agentic engineering: Knowledge_Base/Agentic_Engineering/ACT_LEARN_REUSE_PLAYBOOK.md
 - Reports: docs/reports/*
 
 ## Transcript log
