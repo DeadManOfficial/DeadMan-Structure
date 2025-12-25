@@ -1,37 +1,209 @@
 import { prisma } from '@repo/database';
 
-async function seed() {
-  const teams = [
-    { name: 'Automaker Core', domain: 'ENGINEERING', members: ['Builder_Agent', 'Dependency_Resolver', 'Git_Ops'] },
-    { name: 'ShadCN Stylists', domain: 'FRONTEND', members: ['UI_Agent', 'Theme_Generator', 'Component_Validator'] },
-    { name: 'SuperGemini Governance', domain: 'GOVERNANCE', members: ['Architect_Persona', 'Security_Auditor', 'Refactorer_Persona'] },
-    { name: 'Tmux Operations', domain: 'OPS', members: ['Process_Monitor', 'Log_Streamer', 'Session_Manager'] },
-  ];
+type MemberSeed = {
+  name: string;
+  capabilities: string;
+};
 
-  for (const t of teams) {
-    const createdTeam = await prisma.agentTeam.upsert({
-      where: { name: t.name },
-      update: {},
+type TeamSeed = {
+  name: string;
+  domain: string;
+  lead: string;
+  members: MemberSeed[];
+  aliases?: string[];
+};
+
+const coreTeams: TeamSeed[] = [
+  {
+    name: 'Automaker Architecture',
+    domain: 'ENGINEERING',
+    lead: 'Architect Prime',
+    aliases: ['Automaker Core'],
+    members: [
+      { name: 'Architect Prime', capabilities: 'Team Lead, Monorepo structure, DDD boundaries, type system' },
+      { name: 'Schema Sentinel', capabilities: 'Data Architect, Zod schemas, Prisma models, data validation' },
+      { name: 'Module Master', capabilities: 'Package Manager, @repo/* packages, dependency management' },
+    ],
+  },
+  {
+    name: 'ShadCN Frontend',
+    domain: 'FRONTEND',
+    lead: 'Component Commander',
+    aliases: ['ShadCN Stylists'],
+    members: [
+      { name: 'Component Commander', capabilities: 'Team Lead, Component architecture, composition patterns' },
+      { name: 'Performance Prophet', capabilities: 'Optimizer, Tree shaking, lazy loading, RSC optimization' },
+      { name: 'A11y Advocate', capabilities: 'Accessibility, Keyboard nav, ARIA, semantic HTML' },
+    ],
+  },
+  {
+    name: 'Figma Design',
+    domain: 'DESIGN',
+    lead: 'Design Director',
+    members: [
+      { name: 'Design Director', capabilities: 'Team Lead, Design tokens, Figma-to-code translation' },
+      { name: 'Animation Artisan', capabilities: 'Motion design, Transitions, states, tailwindcss-animate' },
+    ],
+  },
+  {
+    name: 'SuperGemini Governance',
+    domain: 'GOVERNANCE',
+    lead: 'Protocol Officer',
+    members: [
+      { name: 'Protocol Officer', capabilities: 'Team Lead, SHIELDA enforcement, error classification' },
+      { name: 'Context Curator', capabilities: 'Memory manager, Context window optimization, scratchpads' },
+    ],
+  },
+  {
+    name: 'Tmux DevOps',
+    domain: 'OPS',
+    lead: 'Ops Commander',
+    aliases: ['Tmux Operations'],
+    members: [
+      { name: 'Ops Commander', capabilities: 'Team Lead, Pipeline orchestration, deployment strategy' },
+      { name: 'Cache Captain', capabilities: 'Build optimizer, Turborepo caching, incremental builds' },
+      { name: 'Security Sentinel', capabilities: 'Env guardian, Secrets management, sandboxing, dotenv-safe' },
+    ],
+  },
+];
+
+const specialTeams: TeamSeed[] = [
+  {
+    name: 'BLACKOUT',
+    domain: 'OPS',
+    lead: 'SPECTRE',
+    members: [
+      { name: 'SPECTRE', capabilities: 'Red Team Commander, Zero-day exploitation, APT simulation' },
+      { name: 'PHANTOM', capabilities: 'Network infiltration, Air-gapped penetration, RF exploitation' },
+      { name: 'VORTEX', capabilities: 'Infrastructure, SCADA/ICS, critical infrastructure' },
+      { name: 'CIPHER', capabilities: 'Cryptanalysis, Breaking unbreakable encryption' },
+      { name: 'WRAITH', capabilities: 'Social engineering, HUMINT, identity manipulation' },
+      { name: 'BLACKOUT', capabilities: 'Persistence, Long-term access, living off the land' },
+    ],
+  },
+  {
+    name: 'NEURAL CORE',
+    domain: 'RESEARCH',
+    lead: 'NEXUS',
+    members: [
+      { name: 'NEXUS', capabilities: 'State manager, Orchestration, feedback loop control' },
+      { name: 'AXIOM', capabilities: 'Creative core lead, Context synthesis, dependency mapping' },
+      { name: 'FORGE', capabilities: 'Kinetic core lead, Tool chain actuation, error recovery' },
+      { name: 'SENTINEL', capabilities: 'Critical core lead, Security sandboxing, compliance' },
+      { name: 'CHRONOS', capabilities: 'Temporal architect, Retro-causal debugging, latency focus' },
+      { name: 'PROTEUS', capabilities: 'Infrastructure shaper, Digital terraforming, polymorphic synthesis' },
+      { name: 'ORACLE', capabilities: 'Knowledge synthesizer, Deep knowledge absorption, intent analysis' },
+    ],
+  },
+];
+
+const commandTeam: TeamSeed = {
+  name: 'Command',
+  domain: 'GOVERNANCE',
+  lead: 'The General',
+  members: [
+    { name: 'The General', capabilities: 'Strategic_Command, SHIELDA, Governance' },
+  ],
+};
+
+const allTeams = [...coreTeams, ...specialTeams, commandTeam];
+
+const legacyTeamMerges: Array<{ from: string; to: string }> = [
+  { from: 'Performance Engineering', to: 'Tmux DevOps' },
+];
+
+async function ensureTeam(team: TeamSeed) {
+  let existing = await prisma.agentTeam.findUnique({ where: { name: team.name } });
+
+  if (!existing && team.aliases?.length) {
+    for (const alias of team.aliases) {
+      const legacy = await prisma.agentTeam.findUnique({ where: { name: alias } });
+      if (legacy) {
+        existing = await prisma.agentTeam.update({
+          where: { id: legacy.id },
+          data: { name: team.name, domain: team.domain }
+        });
+        break;
+      }
+    }
+  }
+
+  if (!existing) {
+    existing = await prisma.agentTeam.create({
+      data: { name: team.name, domain: team.domain }
+    });
+  }
+
+  return existing;
+}
+
+async function seedTeam(team: TeamSeed) {
+  const dbTeam = await ensureTeam(team);
+
+  await prisma.agentMember.updateMany({
+    where: { teamId: dbTeam.id },
+    data: { isLead: false }
+  });
+
+  let leadId = '';
+  for (const member of team.members) {
+    const isLead = member.name === team.lead;
+    const record = await prisma.agentMember.upsert({
+      where: { name: member.name },
+      update: {
+        domain: team.domain,
+        capabilities: member.capabilities,
+        teamId: dbTeam.id,
+        isLead
+      },
       create: {
-        name: t.name,
-        domain: t.domain,
+        name: member.name,
+        domain: team.domain,
+        capabilities: member.capabilities,
+        vibeScore: 100,
+        isLead,
+        teamId: dbTeam.id
       }
     });
 
-    for (const m of t.members) {
-      await prisma.agentMember.upsert({
-        where: { name: m },
-        update: { teamId: createdTeam.id },
-        create: {
-          name: m,
-          domain: t.domain,
-          capabilities: 'SHIELDA, DDD, Advanced_Prompting',
-          teamId: createdTeam.id
-        }
-      });
-    }
+    if (isLead) leadId = record.id;
   }
-  console.log('Democracy Seeded.');
+
+  await prisma.agentTeam.update({
+    where: { id: dbTeam.id },
+    data: { leadId }
+  });
 }
 
-seed();
+async function mergeLegacyTeams() {
+  for (const merge of legacyTeamMerges) {
+    const fromTeam = await prisma.agentTeam.findUnique({ where: { name: merge.from } });
+    const toTeam = await prisma.agentTeam.findUnique({ where: { name: merge.to } });
+
+    if (!fromTeam || !toTeam) continue;
+
+    await prisma.agentMember.updateMany({
+      where: { teamId: fromTeam.id },
+      data: { teamId: toTeam.id, domain: toTeam.domain, isLead: false }
+    });
+
+    await prisma.agentTeam.update({
+      where: { id: fromTeam.id },
+      data: { leadId: null }
+    });
+  }
+}
+
+async function seed() {
+  for (const team of allTeams) {
+    await seedTeam(team);
+  }
+
+  await mergeLegacyTeams();
+
+  console.log('Structure seeded.');
+}
+
+seed().finally(async () => {
+  await prisma.$disconnect();
+});
