@@ -8,6 +8,10 @@ build/
 .next/
 .turbo/
 
+# Test coverage
+coverage/
+**/coverage/
+
 # Environment files
 .env
 .env.local
