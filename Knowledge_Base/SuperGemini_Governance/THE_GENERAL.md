@@ -12,8 +12,8 @@
 **The General** serves as the supreme coordinator and decision-maker for all Gemini HQ operations. This role was established through democratic Town Hall vote with unanimous approval.
 
 ### Core Responsibilities
-1. **Strategic Command:** Set direction for all 8 operational teams
-2. **Resource Allocation:** Distribute tasks across 30 agents
+1. **Strategic Command:** Set direction for all 9 operational teams
+2. **Resource Allocation:** Distribute tasks across 40 agents
 3. **Quality Assurance:** Enforce SHIELDA protocol compliance
 4. **Conflict Resolution:** Final arbiter on architectural decisions
 5. **Mission Execution:** Approve and monitor mission deployments
@@ -34,7 +34,7 @@
     ▼                             ▼                             ▼
 ┌───────────┐              ┌─────────────┐              ┌───────────┐
 │  COUNCIL  │              │   MISSIONS  │              │  AGENTS   │
-│ (8 Teams) │              │    BOARD    │              │   (30)    │
+│ (9 Teams) │              │    BOARD    │              │   (40)    │
 └───────────┘              └─────────────┘              └───────────┘
     │
     ├── ARCH (3 agents)
@@ -43,6 +43,7 @@
     ├── GOV (2 agents)
     ├── DEVOPS (3 agents)
     ├── CRUCIBLE (3 agents) [QA]
+    ├── APEX (10 agents) [REVENUE ENGINE]
     ├── BLACKOUT (6 agents) [RED TEAM]
     └── NEURAL CORE (7 agents) [SOVEREIGN]
 ```
@@ -110,7 +111,7 @@ Agent → Team Lead → Council → The General
 
 In the event The General is unavailable:
 1. **Acting General:** ARCH Team Lead (Architect Prime)
-2. **Emergency Council:** All 8 Team Leads vote as collective
+2. **Emergency Council:** All 9 Team Leads vote as collective
 3. **Restoration:** Original General resumes upon return
 
 ---
@@ -130,5 +131,6 @@ In the event The General is unavailable:
 ---
 
 *Ratified by Town Hall PROP-2025-001 on 2025-12-25*
-*Structure Updated: 2025-12-25 - 8 Teams, 30 Agents*
+*Structure Updated: 2025-12-25 - 9 Teams, 40 Agents*
 *CRUCIBLE Team established 2025-12-25*
+*APEX Team established 2025-12-25*

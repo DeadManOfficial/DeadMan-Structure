@@ -2,7 +2,7 @@
 
 **Established:** 2025-12-25
 **Authority:** The General (PROP-2025-001)
-**Configuration:** 30 Agents / 8 Teams
+**Configuration:** 40 Agents / 9 Teams
 **Last Updated:** 2025-12-25
 
 ---
@@ -39,6 +39,25 @@
 | **PROTEUS** | Infrastructure Shaper | Omni-morphic Weaver Branch |
 | **ORACLE** | Knowledge Synthesizer | Akashic Resonance Branch |
 
+### APEX Team (Revenue Engine - 10 Agents)
+**Classification:** STRATEGIC OPERATIONS
+**Lead:** APEX PRIME
+**Manual:** `APEX_TEAM.md`
+**Mission:** AI-Powered Revenue Engine eXecution
+
+| Codename | Role | Domain |
+|----------|------|--------|
+| **APEX PRIME** | Team Lead | Revenue orchestration, campaign approval |
+| **SCOUT** | Research & Lead Intelligence | Data mining, ICP matching, lead scoring |
+| **STRATEGIST** | Campaign Strategy | Bayesian inference, engagement sequencing |
+| **SCRIBE** | Copywriter | Personalization, brand voice, human-feel authenticity |
+| **CRITIC** | Adversarial QA | Spam detection, objection simulation |
+| **COMPRESS** | Token Optimization | Context caching, log-summary compression |
+| **ORCHESTRATOR** | Tier Routing | Multi-model routing, context budget |
+| **RETRIEVER** | RAG Engine | Vector search, knowledge base access |
+| **SENTINEL** | Compliance | Platform policies, legal compliance |
+| **ECHO** | Brand Voice | Voice consistency, quality thresholds |
+
 ---
 
 ## 1. Organizational Chart
@@ -57,13 +76,13 @@
 │  (3)  │  │   (3)  │  │   (2)  │  │  (2)  │  │   (3)  │  │   (3)   │  │  OPS   │
 └───────┘  └────────┘  └────────┘  └───────┘  └────────┘  └─────────┘  └────┬───┘
                                                                             │
-                                                          ┌─────────────────┼─────────────────┐
-                                                          │                                   │
-                                                          ▼                                   ▼
-                                                    ┌──────────┐                        ┌──────────┐
-                                                    │ BLACKOUT │                        │ NEURAL   │
-                                                    │   (6)    │                        │  CORE(7) │
-                                                    └──────────┘                        └──────────┘
+                       ┌────────────────────────────────────────────────────┼────────────────┐
+                       │                                 │                                   │
+                       ▼                                 ▼                                   ▼
+                 ┌──────────┐                      ┌──────────┐                        ┌──────────┐
+                 │   APEX   │                      │ BLACKOUT │                        │ NEURAL   │
+                 │   (10)   │                      │   (6)    │                        │  CORE(7) │
+                 └──────────┘                      └──────────┘                        └──────────┘
 ```
 
 ---
@@ -150,6 +169,16 @@
 | 14 | VALIDATOR | CRUCIBLE | Lead |
 | 15 | PROBE | CRUCIBLE | Testing |
 | 16 | REGRESSION | CRUCIBLE | Coverage |
+| 17 | APEX PRIME | APEX | Lead |
+| 18 | SCOUT | APEX | Research |
+| 19 | STRATEGIST | APEX | Strategy |
+| 20 | SCRIBE | APEX | Copywriter |
+| 21 | CRITIC | APEX | Adversarial QA |
+| 22 | COMPRESS | APEX | Token Optimization |
+| 23 | ORCHESTRATOR | APEX | Tier Routing |
+| 24 | RETRIEVER | APEX | RAG Engine |
+| 25 | SENTINEL | APEX | Compliance |
+| 26 | ECHO | APEX | Brand Voice |
 
 ---
 
@@ -247,12 +276,14 @@ Level 4: The General decides
 | GOV | READY | 2/2 |
 | DEVOPS | READY | 3/3 |
 | CRUCIBLE | READY | 3/3 |
+| APEX | READY | 10/10 |
 | BLACKOUT | READY | 6/6 |
 | NEURAL CORE | READY | 7/7 |
-| **TOTAL** | **OPERATIONAL** | **30/30** |
+| **TOTAL** | **OPERATIONAL** | **40/40** |
 
 ---
 
 *Structure ratified by The General on 2025-12-25*
 *CRUCIBLE Team established 2025-12-25*
+*APEX Team established 2025-12-25*
 *All agents reporting for duty.*

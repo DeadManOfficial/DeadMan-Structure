@@ -105,6 +105,23 @@ const specialTeams: TeamSeed[] = [
       { name: 'ORACLE', capabilities: 'Knowledge synthesizer, Deep knowledge absorption, intent analysis' },
     ],
   },
+  {
+    name: 'APEX',
+    domain: 'REVENUE',
+    lead: 'APEX PRIME',
+    members: [
+      { name: 'APEX PRIME', capabilities: 'Team Lead, Revenue orchestration, campaign approval' },
+      { name: 'SCOUT', capabilities: 'Research & Lead Intelligence, Data mining, ICP matching, lead scoring' },
+      { name: 'STRATEGIST', capabilities: 'Campaign Strategy, Bayesian inference, engagement sequencing' },
+      { name: 'SCRIBE', capabilities: 'Copywriter, Personalization variables, brand voice, human-feel authenticity' },
+      { name: 'CRITIC', capabilities: 'Adversarial QA, Spam detection, objection simulation, compliance scanning' },
+      { name: 'COMPRESS', capabilities: 'Token Optimization, Context caching, log-summary compression' },
+      { name: 'ORCHESTRATOR', capabilities: 'Tier Routing, Multi-model routing, context budget management' },
+      { name: 'RETRIEVER', capabilities: 'RAG Engine, Vector search, hybrid retrieval, knowledge base access' },
+      { name: 'SENTINEL', capabilities: 'Compliance, Spam filter detection, platform policy enforcement' },
+      { name: 'ECHO', capabilities: 'Brand Voice Guardian, Voice consistency, quality thresholds, tone calibration' },
+    ],
+  },
 ];
 
 const commandTeam: TeamSeed = {

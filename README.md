@@ -3,8 +3,8 @@
 > *"We do not write code. We rearrange the entropy of the universe until the solution is the only inevitable outcome."*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Teams](https://img.shields.io/badge/Teams-8-blue)]()
-[![Agents](https://img.shields.io/badge/Agents-30-green)]()
+[![Teams](https://img.shields.io/badge/Teams-9-blue)]()
+[![Agents](https://img.shields.io/badge/Agents-40-green)]()
 [![Status](https://img.shields.io/badge/Status-OPERATIONAL-brightgreen)]()
 
 ---
@@ -58,10 +58,11 @@ This repository contains the operational structure, team configurations, agent p
 | **DEVOPS** | Ops Commander | 3 | CI/CD, Caching, Security |
 | **CRUCIBLE** | VALIDATOR | 3 | Quality Assurance, Testing, Coverage |
 
-### Special Operations (13 Agents)
+### Special Operations (23 Agents)
 
 | Team | Lead | Agents | Classification |
 |------|------|--------|----------------|
+| **APEX** | APEX PRIME | 10 | STRATEGIC OPS - AI-Powered Revenue Engine |
 | **BLACKOUT** | SPECTRE | 6 | RED TEAM - Offensive Cyber Operations |
 | **NEURAL CORE** | NEXUS | 7 | SOVEREIGN - Codex 5.2 Architecture |
 
