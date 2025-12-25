@@ -65,6 +65,16 @@ const coreTeams: TeamSeed[] = [
       { name: 'Security Sentinel', capabilities: 'Env guardian, Secrets management, sandboxing, dotenv-safe' },
     ],
   },
+  {
+    name: 'CRUCIBLE',
+    domain: 'QA',
+    lead: 'VALIDATOR',
+    members: [
+      { name: 'VALIDATOR', capabilities: 'Team Lead, Test strategy, quality gates, release approval' },
+      { name: 'PROBE', capabilities: 'Test engineer, Unit/integration/e2e test implementation' },
+      { name: 'REGRESSION', capabilities: 'Coverage analyst, Code coverage, regression detection, metrics' },
+    ],
+  },
 ];
 
 const specialTeams: TeamSeed[] = [

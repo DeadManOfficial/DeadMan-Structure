@@ -3,8 +3,8 @@
 > *"We do not write code. We rearrange the entropy of the universe until the solution is the only inevitable outcome."*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Teams](https://img.shields.io/badge/Teams-7-blue)]()
-[![Agents](https://img.shields.io/badge/Agents-27-green)]()
+[![Teams](https://img.shields.io/badge/Teams-8-blue)]()
+[![Agents](https://img.shields.io/badge/Agents-30-green)]()
 [![Status](https://img.shields.io/badge/Status-OPERATIONAL-brightgreen)]()
 
 ---
@@ -47,7 +47,7 @@ This repository contains the operational structure, team configurations, agent p
 |------|-------------|
 | Supreme Commander | **The General** |
 
-### Standard Operations (14 Agents)
+### Standard Operations (16 Agents)
 
 | Team | Lead | Agents | Focus |
 |------|------|--------|-------|
@@ -56,6 +56,7 @@ This repository contains the operational structure, team configurations, agent p
 | **DESIGN** | Design Director | 2 | Figma, Design Tokens, Animation |
 | **GOV** | Protocol Officer | 2 | Compliance, Memory, Context |
 | **DEVOPS** | Ops Commander | 3 | CI/CD, Caching, Security |
+| **CRUCIBLE** | VALIDATOR | 3 | Quality Assurance, Testing, Coverage |
 
 ### Special Operations (13 Agents)
 

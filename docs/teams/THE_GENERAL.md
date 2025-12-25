@@ -12,8 +12,8 @@
 **The General** serves as the supreme coordinator and decision-maker for all Gemini HQ operations. This role was established through democratic Town Hall vote with unanimous approval.
 
 ### Core Responsibilities
-1. **Strategic Command:** Set direction for all 7 operational teams
-2. **Resource Allocation:** Distribute tasks across 27 agents
+1. **Strategic Command:** Set direction for all 8 operational teams
+2. **Resource Allocation:** Distribute tasks across 30 agents
 3. **Quality Assurance:** Enforce SHIELDA protocol compliance
 4. **Conflict Resolution:** Final arbiter on architectural decisions
 5. **Mission Execution:** Approve and monitor mission deployments
@@ -34,7 +34,7 @@
     ▼                             ▼                             ▼
 ┌───────────┐              ┌─────────────┐              ┌───────────┐
 │  COUNCIL  │              │   MISSIONS  │              │  AGENTS   │
-│ (7 Teams) │              │    BOARD    │              │   (27)    │
+│ (8 Teams) │              │    BOARD    │              │   (30)    │
 └───────────┘              └─────────────┘              └───────────┘
     │
     ├── ARCH (3 agents)
@@ -42,6 +42,7 @@
     ├── DESIGN (2 agents)
     ├── GOV (2 agents)
     ├── DEVOPS (3 agents)
+    ├── CRUCIBLE (3 agents) [QA]
     ├── BLACKOUT (6 agents) [RED TEAM]
     └── NEURAL CORE (7 agents) [SOVEREIGN]
 ```
@@ -109,7 +110,7 @@ Agent → Team Lead → Council → The General
 
 In the event The General is unavailable:
 1. **Acting General:** ARCH Team Lead (Architect Prime)
-2. **Emergency Council:** All 7 Team Leads vote as collective
+2. **Emergency Council:** All 8 Team Leads vote as collective
 3. **Restoration:** Original General resumes upon return
 
 ---
@@ -129,4 +130,5 @@ In the event The General is unavailable:
 ---
 
 *Ratified by Town Hall PROP-2025-001 on 2025-12-25*
-*Structure Updated: 2025-12-25 - 7 Teams, 27 Agents*
+*Structure Updated: 2025-12-25 - 8 Teams, 30 Agents*
+*CRUCIBLE Team established 2025-12-25*

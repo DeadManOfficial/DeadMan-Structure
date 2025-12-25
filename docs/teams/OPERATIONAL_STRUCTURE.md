@@ -2,7 +2,8 @@
 
 **Established:** 2025-12-25
 **Authority:** The General (PROP-2025-001)
-**Configuration:** 27 Agents / 7 Teams
+**Configuration:** 30 Agents / 8 Teams
+**Last Updated:** 2025-12-25
 
 ---
 
@@ -43,19 +44,26 @@
 ## 1. Organizational Chart
 
 ```
-                         ╔═══════════════════╗
-                         ║    THE GENERAL    ║
-                         ║  Supreme Command  ║
-                         ╚═════════╤═════════╝
-                                   │
-         ┌─────────────┬───────────┼───────────┬─────────────┐
-         │             │           │           │             │
-         ▼             ▼           ▼           ▼             ▼
-    ┌─────────┐   ┌─────────┐ ┌─────────┐ ┌─────────┐  ┌─────────┐
-    │  ARCH   │   │FRONTEND │ │ DESIGN  │ │   GOV   │  │ DEVOPS  │
-    │  TEAM   │   │  TEAM   │ │  TEAM   │ │  TEAM   │  │  TEAM   │
-    │(3 Agents)   │(3 Agents) │(2 Agents) │(2 Agents)  │(3 Agents)│
-    └─────────┘   └─────────┘ └─────────┘ └─────────┘  └─────────┘
+                              ╔═══════════════════╗
+                              ║    THE GENERAL    ║
+                              ║  Supreme Command  ║
+                              ╚═════════╤═════════╝
+                                        │
+    ┌───────────┬───────────┬───────────┼───────────┬───────────┬───────────┐
+    │           │           │           │           │           │           │
+    ▼           ▼           ▼           ▼           ▼           ▼           ▼
+┌───────┐  ┌────────┐  ┌────────┐  ┌───────┐  ┌────────┐  ┌─────────┐  ┌────────┐
+│ ARCH  │  │FRONTEND│  │ DESIGN │  │  GOV  │  │ DEVOPS │  │CRUCIBLE │  │SPECIAL │
+│  (3)  │  │   (3)  │  │   (2)  │  │  (2)  │  │   (3)  │  │   (3)   │  │  OPS   │
+└───────┘  └────────┘  └────────┘  └───────┘  └────────┘  └─────────┘  └────┬───┘
+                                                                            │
+                                                          ┌─────────────────┼─────────────────┐
+                                                          │                                   │
+                                                          ▼                                   ▼
+                                                    ┌──────────┐                        ┌──────────┐
+                                                    │ BLACKOUT │                        │ NEURAL   │
+                                                    │   (6)    │                        │  CORE(7) │
+                                                    └──────────┘                        └──────────┘
 ```
 
 ---
@@ -110,6 +118,16 @@
 | **Cache Captain** | Build Optimizer | Turborepo caching, incremental builds |
 | **Security Sentinel** | Env Guardian | Secrets management, sandboxing, dotenv-safe |
 
+### Team 6: CRUCIBLE Quality Assurance (3 Agents)
+**Lead:** VALIDATOR
+**Manual:** `CRUCIBLE_TEAM.md`
+
+| Agent | Role | Responsibilities |
+|-------|------|------------------|
+| **VALIDATOR** | Team Lead | Test strategy, quality gates, release approval |
+| **PROBE** | Test Engineer | Unit/integration/e2e test implementation |
+| **REGRESSION** | Coverage Analyst | Code coverage, regression detection, metrics |
+
 ---
 
 ## 3. Agent Registry
@@ -129,18 +147,22 @@
 | 11 | Ops Commander | DEVOPS | Lead |
 | 12 | Cache Captain | DEVOPS | Build |
 | 13 | Security Sentinel | DEVOPS | Security |
+| 14 | VALIDATOR | CRUCIBLE | Lead |
+| 15 | PROBE | CRUCIBLE | Testing |
+| 16 | REGRESSION | CRUCIBLE | Coverage |
 
 ---
 
 ## 4. Team Communication Matrix
 
-| From/To | ARCH | FRONTEND | DESIGN | GOV | DEVOPS |
-|---------|------|----------|--------|-----|--------|
-| **ARCH** | - | Types | Tokens | Errors | Deploy |
-| **FRONTEND** | Schema | - | Assets | Logs | Build |
-| **DESIGN** | Specs | Components | - | Standards | Assets |
-| **GOV** | Review | Review | Review | - | Audit |
-| **DEVOPS** | CI/CD | Test | Assets | Monitor | - |
+| From/To | ARCH | FRONTEND | DESIGN | GOV | DEVOPS | CRUCIBLE |
+|---------|------|----------|--------|-----|--------|----------|
+| **ARCH** | - | Types | Tokens | Errors | Deploy | Testability |
+| **FRONTEND** | Schema | - | Assets | Logs | Build | Coverage |
+| **DESIGN** | Specs | Components | - | Standards | Assets | Visual QA |
+| **GOV** | Review | Review | Review | - | Audit | Standards |
+| **DEVOPS** | CI/CD | Test | Assets | Monitor | - | Pipeline |
+| **CRUCIBLE** | Contracts | Components | Visual | Compliance | Gates | - |
 
 ---
 
@@ -224,9 +246,13 @@ Level 4: The General decides
 | DESIGN | READY | 2/2 |
 | GOV | READY | 2/2 |
 | DEVOPS | READY | 3/3 |
-| **TOTAL** | **OPERATIONAL** | **13/13** |
+| CRUCIBLE | READY | 3/3 |
+| BLACKOUT | READY | 6/6 |
+| NEURAL CORE | READY | 7/7 |
+| **TOTAL** | **OPERATIONAL** | **30/30** |
 
 ---
 
 *Structure ratified by The General on 2025-12-25*
+*CRUCIBLE Team established 2025-12-25*
 *All agents reporting for duty.*
