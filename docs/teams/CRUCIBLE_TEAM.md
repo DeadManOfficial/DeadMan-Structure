@@ -47,11 +47,11 @@ The CRUCIBLE Team ensures all code, systems, and deployments meet the highest st
 | Reporting To | VALIDATOR |
 
 **Capabilities:**
-- Write unit tests (Vitest, Jest)
-- Write integration tests
-- Write end-to-end tests (Playwright, Cypress)
+- Write integration tests (real environment, no mocks)
+- Write end-to-end tests (Playwright)
 - API testing (contract testing, load testing)
-- Exploratory testing protocols
+- Manual testing protocols (actual user workflows)
+- Exploratory testing
 
 ---
 
@@ -151,11 +151,10 @@ The CRUCIBLE Team ensures all code, systems, and deployments meet the highest st
 
 | Category | Tools |
 |----------|-------|
-| Unit Testing | Vitest, Jest |
-| E2E Testing | Playwright, Cypress |
-| API Testing | Supertest, Pact |
+| Integration Testing | Playwright (real browser), manual testing |
+| API Testing | Direct HTTP calls, no mocks |
 | Performance | k6, Artillery |
-| Coverage | c8, Istanbul |
+| Coverage | Real-world usage, bug reports |
 | Visual Regression | Percy, Chromatic |
 
 ---

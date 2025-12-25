@@ -6,14 +6,10 @@
     "packages/*"
   ],
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "@vitest/coverage-v8": "^1.0.0",
-    "vitest": "^1.0.0",
-    "turbo": "^1.10.0"
+    "turbo": "^1.10.0",
+    "typescript": "^5.0.0"
   },
   "scripts": {
-    "test": "turbo run test",
-    "test:coverage": "turbo run test --coverage",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint"
