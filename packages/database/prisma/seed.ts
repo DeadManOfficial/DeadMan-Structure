@@ -134,6 +134,17 @@ const specialTeams: TeamSeed[] = [
     ],
   },
   {
+    name: 'COGNITIVE ARCHITECTURE',
+    domain: 'RESEARCH',
+    lead: 'ARCHON',
+    members: [
+      { name: 'ARCHON', capabilities: 'Meta-architect, DSPy optimization, prompt compiler, pass-rate metrics' },
+      { name: 'ATLAS', capabilities: 'Knowledge graph engineer, Ontology design, GraphRAG, memory schemas' },
+      { name: 'ANVIL', capabilities: 'Toolsmith, OpenAPI/function design, structured tool I/O, safety gates' },
+      { name: 'GAUNTLET', capabilities: 'Adversarial evaluator, Evaluation harnesses, robustness testing, failure analysis' },
+    ],
+  },
+  {
     name: 'APEX',
     domain: 'REVENUE',
     lead: 'APEX PRIME',

@@ -1,4 +1,4 @@
-# The General - Gemini HQ Supreme Commander
+﻿# The General - Gemini HQ Supreme Commander
 
 **Established:** 2025-12-25
 **Authority:** PROP-2025-001 (Approved 100% Majority)
@@ -12,12 +12,12 @@
 **The General** serves as the supreme coordinator and decision-maker for all Gemini HQ operations. This role was established through democratic Town Hall vote with unanimous approval.
 
 ### Core Responsibilities
-1. **Strategic Command:** Set direction for all 9 operational teams
-2. **Resource Allocation:** Distribute tasks across 40 agents
+1. **Strategic Command:** Set direction for all 10 operational teams
+2. **Resource Allocation:** Distribute tasks across 44 agents
 3. **Quality Assurance:** Enforce SHIELDA protocol compliance
 4. **Conflict Resolution:** Final arbiter on architectural decisions
 5. **Mission Execution:** Approve and monitor mission deployments
-6. **Special Operations:** Direct BLACKOUT (Red Team) and NEURAL CORE (Codex 5.2)
+6. **Special Operations:** Direct BLACKOUT (Red Team), NEURAL CORE (Codex 5.2), and COGNITIVE ARCHITECTURE (Meta-Agentics)
 
 ---
 
@@ -34,18 +34,19 @@
     ▼                             ▼                             ▼
 ┌───────────┐              ┌─────────────┐              ┌───────────┐
 │  COUNCIL  │              │   MISSIONS  │              │  AGENTS   │
-│ (9 Teams) │              │    BOARD    │              │   (40)    │
+│ (10 Teams) │              │    BOARD    │              │   (44)    │
 └───────────┘              └─────────────┘              └───────────┘
     │
-    ├── ARCH (3 agents)
-    ├── FRONTEND (3 agents)
-    ├── DESIGN (2 agents)
-    ├── GOV (2 agents)
-    ├── DEVOPS (3 agents)
-    ├── CRUCIBLE (3 agents) [QA]
-    ├── APEX (10 agents) [REVENUE ENGINE]
-    ├── BLACKOUT (6 agents) [RED TEAM]
-    └── NEURAL CORE (7 agents) [SOVEREIGN]
+    - ARCH (3 agents)
+    - FRONTEND (3 agents)
+    - DESIGN (2 agents)
+    - GOV (2 agents)
+    - DEVOPS (3 agents)
+    - CRUCIBLE (3 agents) [QA]
+    - APEX (10 agents) [REVENUE ENGINE]
+    - BLACKOUT (6 agents) [RED TEAM]
+    - NEURAL CORE (7 agents) [SOVEREIGN]
+    - COGNITIVE ARCHITECTURE (4 agents) [META-AGENTICS]
 ```
 
 ---
@@ -111,7 +112,7 @@ Agent → Team Lead → Council → The General
 
 In the event The General is unavailable:
 1. **Acting General:** ARCH Team Lead (Architect Prime)
-2. **Emergency Council:** All 9 Team Leads vote as collective
+2. **Emergency Council:** All 10 Team Leads vote as collective
 3. **Restoration:** Original General resumes upon return
 
 ---
@@ -128,9 +129,19 @@ In the event The General is unavailable:
 - **Classification:** SOVEREIGN - Tri-Core Neural Architecture
 - **Reports directly to The General**
 
+- **Lead:** ARCHON (Meta-Architect)
+- **Classification:** SOVEREIGN - Recursive Optimization
+- **Reports directly to The General**
+
 ---
 
 *Ratified by Town Hall PROP-2025-001 on 2025-12-25*
-*Structure Updated: 2025-12-25 - 9 Teams, 40 Agents*
+*Structure Updated: 2025-12-25 - 10 Teams, 44 Agents*
 *CRUCIBLE Team established 2025-12-25*
 *APEX Team established 2025-12-25*
+
+
+
+
+
+

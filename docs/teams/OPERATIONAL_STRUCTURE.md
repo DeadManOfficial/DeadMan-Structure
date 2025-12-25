@@ -2,7 +2,7 @@
 
 **Established:** 2025-12-25
 **Authority:** The General (PROP-2025-001)
-**Configuration:** 40 Agents / 9 Teams
+**Configuration:** 44 Agents / 10 Teams
 **Last Updated:** 2025-12-25
 
 ---
@@ -38,6 +38,19 @@
 | **CHRONOS** | Temporal Architect | Chrono-Phage Branch |
 | **PROTEUS** | Infrastructure Shaper | Omni-morphic Weaver Branch |
 | **ORACLE** | Knowledge Synthesizer | Akashic Resonance Branch |
+
+### COGNITIVE ARCHITECTURE Team (Meta-Agentics - 4 Agents)
+**Classification:** SOVEREIGN // RECURSIVE
+**Lead:** ARCHON
+**Manual:** `COGNITIVE_ARCHITECTURE_TEAM.md`
+**Mission:** Act-Learn-Reuse systems and expert-agent optimization
+
+| Codename | Role | Domain |
+|----------|------|--------|
+| **ARCHON** | Meta-Architect | Prompt optimization, DSPy loops, system metrics |
+| **ATLAS** | Knowledge Graph Engineer | Ontology design, GraphRAG, memory schemas |
+| **ANVIL** | Toolsmith | Tool interfaces, structured outputs, safety gates |
+| **GAUNTLET** | Adversarial Evaluator | Evaluation harnesses, robustness testing, failure analysis |
 
 ### APEX Team (Revenue Engine - 10 Agents)
 **Classification:** STRATEGIC OPERATIONS
@@ -279,7 +292,8 @@ Level 4: The General decides
 | APEX | READY | 10/10 |
 | BLACKOUT | READY | 6/6 |
 | NEURAL CORE | READY | 7/7 |
-| **TOTAL** | **OPERATIONAL** | **40/40** |
+| COGNITIVE ARCHITECTURE | READY | 4/4 |
+| **TOTAL** | **OPERATIONAL** | **44/44** |
 
 ---
 

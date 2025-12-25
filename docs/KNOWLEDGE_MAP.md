@@ -13,7 +13,7 @@
 ## Organization and teams
 - Command: The General (docs/teams/THE_GENERAL.md)
 - Standard ops teams (5): Automaker Architecture, ShadCN Frontend, Figma Design, SuperGemini Governance, Tmux DevOps (docs/teams/OPERATIONAL_STRUCTURE.md)
-- Special ops teams (2): BLACKOUT, NEURAL CORE (docs/teams/BLACKOUT_TEAM.md, docs/teams/NEURAL_CORE_TEAM.md)
+- Special ops teams (3): BLACKOUT, NEURAL CORE, COGNITIVE ARCHITECTURE (docs/teams/BLACKOUT_TEAM.md, docs/teams/NEURAL_CORE_TEAM.md, docs/teams/COGNITIVE_ARCHITECTURE_TEAM.md)
 - Mission board: docs/missions/MISSION_BOARD.md
 
 ## API surface
