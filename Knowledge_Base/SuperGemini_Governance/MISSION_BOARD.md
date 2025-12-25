@@ -1,4 +1,4 @@
-# GEMINI HQ MISSION BOARD
+# DEAD MAN STRUCTURE MISSION BOARD
 **Commander:** The General
 **Status:** ACTIVE OPERATIONS
 **Last Updated:** 2025-12-25

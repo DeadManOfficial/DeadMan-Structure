@@ -1,4 +1,4 @@
-﻿# The General - Gemini HQ Supreme Commander
+﻿# The General - Dead Man Structure Supreme Commander
 
 **Established:** 2025-12-25
 **Authority:** PROP-2025-001 (Approved 100% Majority)

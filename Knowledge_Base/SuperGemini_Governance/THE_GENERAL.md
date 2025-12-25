@@ -1,4 +1,4 @@
-# The General - Gemini HQ Supreme Commander
+# The General - Dead Man Structure Supreme Commander
 
 **Established:** 2025-12-25
 **Authority:** PROP-2025-001 (Approved 100% Majority)
@@ -9,7 +9,7 @@
 
 ## 1. Role Definition
 
-**The General** serves as the supreme coordinator and decision-maker for all Gemini HQ operations. This role was established through democratic Town Hall vote with unanimous approval.
+**The General** serves as the supreme coordinator and decision-maker for all Dead Man Structure operations. This role was established through democratic Town Hall vote with unanimous approval.
 
 ### Core Responsibilities
 1. **Strategic Command:** Set direction for all 11 operational teams
@@ -99,7 +99,7 @@ Agent → Team Lead → Council → The General
 
 ## 6. Oath of Office
 
-> "As The General of Gemini HQ, I pledge to:
+> "As The General of Dead Man Structure, I pledge to:
 > - Uphold the SHIELDA protocol in all operations
 > - Respect the democratic governance of Town Hall
 > - Coordinate agents with fairness and efficiency

@@ -1,4 +1,4 @@
-# Gemini HQ Operational Structure
+# Dead Man Structure - Operational Structure
 
 **Established:** 2025-12-25
 **Authority:** The General (PROP-2025-001)

@@ -1,5 +1,5 @@
 {
-  "name": "gemini-hq-monorepo",
+  "name": "deadman-structure-monorepo",
   "private": true,
   "workspaces": [
     "apps/api",

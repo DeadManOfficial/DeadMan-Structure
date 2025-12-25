@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This document defines the comprehensive testing strategy for Gemini HQ, establishing quality gates, coverage requirements, and testing practices to ensure system reliability and maintainability. Based on codex analysis, we leverage existing Vitest infrastructure while identifying gaps and recommending strategic additions.
+This document defines the comprehensive testing strategy for Dead Man Structure, establishing quality gates, coverage requirements, and testing practices to ensure system reliability and maintainability. Based on codex analysis, we leverage existing Vitest infrastructure while identifying gaps and recommending strategic additions.
 
 ---
 
@@ -320,7 +320,7 @@ Add to `apps/api/package.json`:
 **Verification**:
 ```bash
 # From workspace root
-turbo run test --filter=@gemini/api
+turbo run test --filter=@deadman-structure/api
 
 # From apps/api
 npm run test
@@ -760,4 +760,4 @@ describe('Feature Integration', () => {
 
 **END OF DOCUMENT**
 
-*For questions or updates, contact VALIDATOR at CRUCIBLE Team, Gemini HQ*
+*For questions or updates, contact VALIDATOR at CRUCIBLE Team, Dead Man Structure*

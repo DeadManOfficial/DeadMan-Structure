@@ -103,7 +103,7 @@
 
 ---
 
-## 6. Recommendations for Gemini HQ Operations
+## 6. Recommendations for Dead Man Structure Operations
 
 ### Development Environment
 - **Turborepo:** Leverage the 16-core CPU for parallel builds
@@ -125,7 +125,7 @@
 
 **System Grade: S-Tier**
 
-This workstation exceeds requirements for Gemini HQ operations:
+This workstation exceeds requirements for Dead Man Structure operations:
 - Top-tier AMD Ryzen 9 9950X3D for multi-threaded workloads
 - 64GB DDR5-6000 for memory-intensive AI/development tasks
 - 5TB total NVMe storage with near-zero usage

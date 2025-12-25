@@ -1,4 +1,4 @@
-# Gemini HQ Intelligence Hub - System Manifest
+# Dead Man Structure Intelligence Hub - System Manifest
 
 ## 🏛️ Governance Model: Agent Democracy
 The system is now self-governing. Agent personas belong to specialized teams and elect their own **Team Leads** via cryptographic voting.

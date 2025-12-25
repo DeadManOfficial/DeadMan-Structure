@@ -18,7 +18,7 @@ Define the operating pattern for the Cognitive Architecture Team: build a self-i
 - Engineer is the bottleneck: agentic coding pushes beyond manual prompting by building loops, evaluation, and reuse.
 - System-first thinking: build the machine that evolves its own inputs, not just one-off features.
 
-## Act-Learn-Reuse Loop (Gemini HQ)
+## Act-Learn-Reuse Loop (Dead Man Structure)
 1. ACT: Execute tasks with constrained tool interfaces and structured outputs.
 2. OBSERVE: Capture traces, outputs, and automated grades.
 3. LEARN: Diagnose failures, update instructions, and record lessons.

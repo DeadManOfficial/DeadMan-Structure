@@ -9,7 +9,7 @@
 
 ## 1. Mission Statement
 
-**BROADCAST** is Gemini HQ's AI-powered content production studio for YouTube channel domination. The team operates as a Multi-Agent System designed to identify viral opportunities, engineer high-retention content, and optimize for global scale.
+**BROADCAST** is Dead Man Structure's AI-powered content production studio for YouTube channel domination. The team operates as a Multi-Agent System designed to identify viral opportunities, engineer high-retention content, and optimize for global scale.
 
 ### Core Objectives
 1. **Trend Intelligence:** Identify breakout topics before competitors

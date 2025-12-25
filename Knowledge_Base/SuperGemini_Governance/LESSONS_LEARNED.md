@@ -1,4 +1,4 @@
-# LESSONS LEARNED - Gemini HQ Operations
+# LESSONS LEARNED - Dead Man Structure Operations
 
 **Session:** 2025-12-25
 **Purpose:** Prevent recurrence of operational errors
@@ -133,8 +133,8 @@ ls -la /path/to/file
 
 **Conversion:**
 ```
-Windows:    C:\Users\Administrator\Gemini_HQ
-Git Bash:   /c/Users/Administrator/Gemini_HQ
+Windows:    C:\Users\Administrator\DeadMan_Structure
+Git Bash:   /c/Users/Administrator/DeadMan_Structure
 ```
 
 ---

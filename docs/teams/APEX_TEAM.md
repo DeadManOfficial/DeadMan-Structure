@@ -9,7 +9,7 @@
 
 ## 1. Mission Statement
 
-**APEX** (AI-Powered Revenue Engine eXecution) is Gemini HQ's specialized revenue generation unit. The team operates as a Multi-Agent System (MAS) designed to autonomously research, strategize, create, and deploy revenue-generating campaigns at scale while maintaining brand integrity and regulatory compliance.
+**APEX** (AI-Powered Revenue Engine eXecution) is Dead Man Structure's specialized revenue generation unit. The team operates as a Multi-Agent System (MAS) designed to autonomously research, strategize, create, and deploy revenue-generating campaigns at scale while maintaining brand integrity and regulatory compliance.
 
 ### Core Objectives
 1. **Lead Intelligence:** Identify and enrich high-value prospects with actionable dossiers
