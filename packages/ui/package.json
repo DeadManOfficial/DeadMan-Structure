@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
+  "scripts": {
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --no-error-on-unmatched-pattern"
+  },
   "peerDependencies": {
     "react": "^18",
     "tailwindcss": "^3"

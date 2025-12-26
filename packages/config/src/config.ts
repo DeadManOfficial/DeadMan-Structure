@@ -1,4 +1,4 @@
-import { getEnv } from './index'
+import { getEnv } from './env'
 
 /**
  * Application configuration

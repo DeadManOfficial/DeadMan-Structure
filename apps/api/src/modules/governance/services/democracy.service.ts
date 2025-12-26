@@ -67,16 +67,21 @@ export class DemocracyService {
 
         return { ok: true, value: true };
       });
-    } catch (err: any) {
-      if (err.message === 'TEAM_NOT_FOUND') return { ok: false, error: this.err('TEAM_NOT_FOUND', 'Team does not exist') };
-      if (err.message === 'INVALID_MEMBER') return { ok: false, error: this.err('INVALID_MEMBER', 'Voter or Candidate not in team') };
-      return { ok: false, error: this.err('VOTING_FAILED', err.message) };
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      if (message === 'TEAM_NOT_FOUND') {
+        return { ok: false, error: this.err('TEAM_NOT_FOUND', 'Team does not exist') };
+      }
+      if (message === 'INVALID_MEMBER') {
+        return { ok: false, error: this.err('INVALID_MEMBER', 'Voter or Candidate not in team') };
+      }
+      return { ok: false, error: this.err('VOTING_FAILED', message) };
     }
   }
 
   // Note: tallyVotes logic inlined into castVote transaction to prevent race conditions
   // Keeping method reference for potential future standalone use
-  private static async tallyVotes(teamId: string) {
+  private static async tallyVotes(_teamId: string) {
     // This method is now inline within castVote to ensure transactional integrity
     // Left as placeholder for potential non-transactional tally operations
   }

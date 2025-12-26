@@ -1,9 +1,9 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest'
+import { describe, it, expect, beforeAll } from 'vitest'
 import request from 'supertest'
 import { buildApp } from './app' // We'll need to export the app builder
 
 describe('API Smoke Tests', () => {
-  let app: any
+  let app: ReturnType<typeof buildApp>
 
   beforeAll(() => {
     // Build app with test configuration
@@ -24,9 +24,9 @@ describe('API Smoke Tests', () => {
   })
 
   describe('Public Routes', () => {
-    it('should access council routes without authentication', async () => {
+    it('should access council routes without authentication', async () => {     
       const response = await request(app)
-        .get('/api/council')
+        .get('/api/council/status')
         .expect('Content-Type', /json/)
         .expect(200)
 

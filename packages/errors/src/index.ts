@@ -13,7 +13,7 @@ export class AppError extends Error {
     public code: ErrorCode,
     public message: string,
     public statusCode: number = 500,
-    public meta?: Record<string, any>
+    public meta?: Record<string, unknown>
   ) {
     super(message);
     Object.setPrototypeOf(this, AppError.prototype);
@@ -36,13 +36,13 @@ export class NotFoundError extends AppError {
 }
 
 export class ValidationError extends AppError {
-  constructor(message: string, meta?: Record<string, any>) {
+  constructor(message: string, meta?: Record<string, unknown>) {
     super(ErrorCode.VALIDATION_ERROR, message, 400, meta);
   }
 }
 
 export class SystemError extends AppError {
-  constructor(message: string, meta?: Record<string, any>) {
+  constructor(message: string, meta?: Record<string, unknown>) {
     super(ErrorCode.INTERNAL_ERROR, message, 500, meta);
   }
 }

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --no-error-on-unmatched-pattern"
+  },
   "dependencies": {
     "@prisma/client": "^5.7.0"
   },

@@ -28,7 +28,10 @@ const AI_CONFIG = {
   },
 };
 
-export async function sendPrompt(req: Request<{}, {}, CouncilPromptRequest>, res: Response) {
+export async function sendPrompt(
+  req: Request<Record<string, never>, unknown, CouncilPromptRequest>,
+  res: Response
+) {
   const { ai, prompt } = req.body;
 
   if (!ai || !prompt) {
@@ -55,8 +58,9 @@ export async function sendPrompt(req: Request<{}, {}, CouncilPromptRequest>, res
         logger.info({ command: 'gemini' }, 'Executing Gemini CLI');
         try {
           response = execSync(command, { encoding: 'utf-8', timeout: 60000 });
-        } catch (error: any) {
-          response = `Gemini Error: ${error.message || 'Unknown error'}`;
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : 'Unknown error';
+          response = `Gemini Error: ${message}`;
           logger.error({ error }, 'Gemini CLI failed');
         }
         break;
@@ -67,8 +71,9 @@ export async function sendPrompt(req: Request<{}, {}, CouncilPromptRequest>, res
         logger.info({ command: 'codex' }, 'Executing Codex CLI');
         try {
           response = execSync(command, { encoding: 'utf-8', timeout: 120000 });
-        } catch (error: any) {
-          response = `Codex Error: ${error.message || 'Unknown error'}`;
+        } catch (error: unknown) {
+          const message = error instanceof Error ? error.message : 'Unknown error';
+          response = `Codex Error: ${message}`;
           logger.error({ error }, 'Codex CLI failed');
         }
         break;

@@ -55,7 +55,7 @@ export interface ShieldaError {
   code: string;
   message: string;
   severity: ErrorSeverity;
-  meta?: Record<string, any>;
+  meta?: Record<string, unknown>;
 }
 
 export type Result<T, E = ShieldaError> = 

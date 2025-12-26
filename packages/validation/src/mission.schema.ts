@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { PaginationSchema } from './index';
+import { PaginationSchema } from './pagination.schema';
 
 export const CreateMissionSchema = z.object({
   codeName: z.string().min(3).max(50),

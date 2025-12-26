@@ -1,5 +1,8 @@
 import { prisma } from '@repo/database';
-import { Mission, Result } from '@repo/types';
+import { Mission, Priority, Result } from '@repo/types';
+
+const getErrorMessage = (err: unknown): string =>
+  err instanceof Error ? err.message : 'Unknown error';
 
 export class MissionService {
   /**
@@ -11,12 +14,13 @@ export class MissionService {
         orderBy: { updatedAt: 'desc' }
       });
       return { ok: true, value: missions as unknown as Mission[] };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
       return { 
         ok: false, 
         error: { 
           code: 'DB_FETCH_ERROR', 
-          message: err.message, 
+          message, 
           severity: 'HIGH' 
         } 
       };
@@ -26,7 +30,7 @@ export class MissionService {
   /**
    * Creates a mission with strict domain validation
    */
-  static async createMission(data: { codeName: string; description: string; priority?: any }): Promise<Result<Mission>> {
+  static async createMission(data: { codeName: string; description: string; priority?: Priority }): Promise<Result<Mission>> {
     try {
       const mission = await prisma.mission.create({
         data: {
@@ -36,14 +40,15 @@ export class MissionService {
         }
       });
       return { ok: true, value: mission as unknown as Mission };
-    } catch (err: any) {
-      return { 
-        ok: false, 
-        error: { 
-          code: 'DB_CREATE_ERROR', 
-          message: err.message, 
-          severity: 'CRITICAL' 
-        } 
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
+      return {
+        ok: false,
+        error: {
+          code: 'DB_CREATE_ERROR',
+          message,
+          severity: 'CRITICAL'
+        }
       };
     }
   }
@@ -69,12 +74,13 @@ export class MissionService {
       }
 
       return { ok: true, value: mission as unknown as Mission };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
       return {
         ok: false,
         error: {
           code: 'DB_FETCH_ERROR',
-          message: err.message,
+          message,
           severity: 'HIGH'
         }
       };
@@ -91,12 +97,13 @@ export class MissionService {
         data
       });
       return { ok: true, value: mission as unknown as Mission };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
       return {
         ok: false,
         error: {
           code: 'DB_UPDATE_ERROR',
-          message: err.message,
+          message,
           severity: 'HIGH'
         }
       };
@@ -112,12 +119,13 @@ export class MissionService {
         where: { id }
       });
       return { ok: true, value: true };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
       return {
         ok: false,
         error: {
           code: 'DB_DELETE_ERROR',
-          message: err.message,
+          message,
           severity: 'MEDIUM'
         }
       };
@@ -162,12 +170,13 @@ export class MissionService {
       });
 
       return { ok: true, value: updated as unknown as Mission };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
       return {
         ok: false,
         error: {
           code: 'EXECUTION_FAILED',
-          message: err.message,
+          message,
           severity: 'HIGH'
         }
       };

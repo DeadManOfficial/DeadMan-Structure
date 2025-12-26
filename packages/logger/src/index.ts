@@ -44,21 +44,25 @@ const redactSerializer = {
     return redacted;
   },
   // Redact body fields that contain secrets
-  body: (body: any) => {
+  body: (body: unknown) => {
     if (!body || typeof body !== 'object') return body;
 
-    const redacted = { ...body };
+    const redacted = { ...(body as Record<string, unknown>) };
     const sensitiveKeys = ['password', 'token', 'secret', 'apiKey', 'api_key', 'jwt', 'auth'];
 
-    const redactValue = (obj: any): any => {
-      if (!obj || typeof obj !== 'object') return obj;
+    const redactValue = (value: unknown): unknown => {
+      if (!value || typeof value !== 'object') return value;
 
-      const result = Array.isArray(obj) ? [...obj] : { ...obj };
+      if (Array.isArray(value)) {
+        return value.map(item => redactValue(item));
+      }
+
+      const result: Record<string, unknown> = { ...(value as Record<string, unknown>) };
 
       for (const key of Object.keys(result)) {
         if (sensitiveKeys.some(sk => key.toLowerCase().includes(sk))) {
           result[key] = '[REDACTED]';
-        } else if (typeof result[key] === 'object') {
+        } else {
           result[key] = redactValue(result[key]);
         }
       }
