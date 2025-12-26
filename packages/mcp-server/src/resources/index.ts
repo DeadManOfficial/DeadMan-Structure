@@ -5,6 +5,7 @@
  */
 
 import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { ListResourcesRequestSchema, ReadResourceRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { logger } from '@repo/logger';
 
 /**
@@ -12,8 +13,7 @@ import { logger } from '@repo/logger';
  */
 export async function registerResources(server: Server): Promise<void> {
   // Register resources list handler
-  // @ts-ignore - MCP SDK type mismatch
-  server.setRequestHandler('resources/list', async () => ({
+  server.setRequestHandler(ListResourcesRequestSchema, async () => ({
     resources: [
       {
         uri: 'dms:///structure',
@@ -31,8 +31,8 @@ export async function registerResources(server: Server): Promise<void> {
   }));
 
   // Register resource read handlers
-  // @ts-ignore - MCP SDK type mismatch
-  server.setRequestHandler('resources/read', async (request: any) => {
+  // @ts-ignore - MCP SDK request type
+  server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
     const { uri } = request.params;
 
     logger.info(`[MCP] Resource requested: ${uri}`);

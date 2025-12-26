@@ -6,6 +6,7 @@
 
 import { z } from 'zod';
 import type { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { ListToolsRequestSchema, CallToolRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { logger } from '@repo/logger';
 
 /**
@@ -39,17 +40,19 @@ async function getAgents(args: unknown) {
     // ... more agents from database
   ];
 
+  let filteredAgents = agents;
+
   if (team) {
-    return agents.filter(a => a.team.toLowerCase().includes(team.toLowerCase()));
+    filteredAgents = agents.filter(a => a.team.toLowerCase().includes(team.toLowerCase()));
   }
   if (role) {
-    return agents.filter(a => a.role.toLowerCase().includes(role.toLowerCase()));
+    filteredAgents = agents.filter(a => a.role.toLowerCase().includes(role.toLowerCase()));
   }
 
   return {
     content: [{
       type: 'text',
-      text: JSON.stringify(agents, null, 2),
+      text: JSON.stringify(filteredAgents, null, 2),
     }],
   };
 }
@@ -77,17 +80,19 @@ async function getMissions(args: unknown) {
     },
   ];
 
+  let filteredMissions = missions;
+
   if (status) {
-    return missions.filter(m => m.status === status);
+    filteredMissions = missions.filter(m => m.status === status);
   }
   if (priority) {
-    return missions.filter(m => m.priority === priority);
+    filteredMissions = missions.filter(m => m.priority === priority);
   }
 
   return {
     content: [{
       type: 'text',
-      text: JSON.stringify(missions, null, 2),
+      text: JSON.stringify(filteredMissions, null, 2),
     }],
   };
 }
@@ -120,14 +125,19 @@ async function getKnowledge(args: unknown) {
     },
   ];
 
+  let filteredKnowledge = knowledge;
+
   if (topic) {
-    return knowledge.filter(k => k.topic.toLowerCase().includes(topic.toLowerCase()));
+    filteredKnowledge = knowledge.filter(k => k.topic.toLowerCase().includes(topic.toLowerCase()));
+  }
+  if (category) {
+    filteredKnowledge = knowledge.filter(k => k.category.toLowerCase().includes(category.toLowerCase()));
   }
 
   return {
     content: [{
       type: 'text',
-      text: JSON.stringify(knowledge, null, 2),
+      text: JSON.stringify(filteredKnowledge, null, 2),
     }],
   };
 }
@@ -137,8 +147,7 @@ async function getKnowledge(args: unknown) {
  */
 export async function registerTools(server: Server): Promise<void> {
   // Register tools list handler
-  // @ts-ignore - MCP SDK type mismatch
-  server.setRequestHandler('tools/list', async () => ({
+  server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools: [
       {
         name: 'get_agents',
@@ -185,8 +194,8 @@ export async function registerTools(server: Server): Promise<void> {
   }));
 
   // Register tool call handlers
-  // @ts-ignore - MCP SDK type mismatch
-  server.setRequestHandler('tools/call', async (request: any) => {
+  // @ts-ignore - MCP SDK request type
+  server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { name, arguments: args } = request.params;
 
     logger.info(`[MCP] Tool called: ${name}`, { args });

@@ -17,8 +17,8 @@ const SERVER_INFO = {
   version: '1.0.0',
 };
 
-// @ts-ignore
-const CAPABILITIES: any = {
+// Declare server capabilities
+const CAPABILITIES = {
   tools: {},
   resources: {},
 };
@@ -26,8 +26,10 @@ const CAPABILITIES: any = {
 async function main() {
   logger.info('[MCP] Starting Dead Man Structure MCP Server...');
 
-  // Create MCP server
-  const server = new Server(SERVER_INFO, CAPABILITIES);
+  // Create MCP server with capabilities
+  const server = new Server(SERVER_INFO, {
+    capabilities: CAPABILITIES,
+  });
 
   // Register tools (read-only, validated)
   await registerTools(server);
@@ -47,6 +49,7 @@ async function main() {
 }
 
 main().catch((error) => {
-  logger.error('[MCP] Fatal error:', error);
+  logger.error({ err: error }, '[MCP] Fatal error');
+  // @ts-ignore - process.exit is available in Node.js
   process.exit(1);
 });
