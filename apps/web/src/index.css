@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dms-bg text-dms-text font-sans antialiased;
+  }
+}
+
+@layer components {
+  .ai-box {
+    @apply border-2 rounded-lg overflow-hidden;
+  }
+
+  .ai-header-claude {
+    @apply bg-claude/10 border-claude text-claude;
+  }
+
+  .ai-header-gemini {
+    @apply bg-gemini/10 border-gemini text-gemini;
+  }
+
+  .ai-header-codex {
+    @apply bg-codex/10 border-codex text-codex;
+  }
+
+  .ai-response {
+    @apply bg-dms-card p-4 font-mono text-sm whitespace-pre-wrap;
+  }
+}
+
+/* ASCII Box Styles */
+.ascii-box {
+  font-family: 'Fira Code', monospace;
+  line-height: 1.2;
+}
+
+.ascii-border {
+  border-style: solid;
+  border-width: 1px;
+}

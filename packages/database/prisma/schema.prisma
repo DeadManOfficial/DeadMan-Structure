@@ -37,15 +37,26 @@ model AgentTeam {
   votes   Vote[]
 }
 
+model Capability {
+  id        String        @id @default(uuid())
+  name      String        @unique
+  category  String?
+  members   AgentMember[] // Many-to-many relation
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
 model AgentMember {
-  id           String    @id @default(uuid())
-  name         String    @unique
+  id           String        @id @default(uuid())
+  name         String        @unique
   domain       String
-  capabilities String    // Stored as comma-separated or JSON
-  vibeScore    Int       @default(100)
-  isLead       Boolean   @default(false)
+  capabilities Capability[]  // Many-to-many relation (normalized)
+  vibeScore    Int           @default(100)
+  isLead       Boolean       @default(false)
   teamId       String?
-  team         AgentTeam? @relation(fields: [teamId], references: [id])
+  team         AgentTeam?    @relation(fields: [teamId], references: [id])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 }
 
 model Vote {

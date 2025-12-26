@@ -36,43 +36,15 @@ const defaultDirectives: GeneralDirectives = {
     teamNormalize: 'upper_snake',
     aliasLabel: 'Alias'
   },
-  legacyTeamMerge: [
-    { from: 'Performance Engineering', to: 'Tmux DevOps' }
-  ]
+  legacyTeamMerge: []
 };
 
+// ============================================
+// DEAD MAN STRUCTURE - COMPLETE TEAM ROSTER
+// 21 Teams, 165 Agents, Proper Names Only
+// ============================================
+
 const coreTeams: TeamSeed[] = [
-  {
-    name: 'Automaker Architecture',
-    domain: 'ENGINEERING',
-    lead: 'Architect Prime',
-    aliases: ['Automaker Core'],
-    members: [
-      { name: 'Architect Prime', capabilities: 'Team Lead, Monorepo structure, DDD boundaries, type system' },
-      { name: 'Schema Sentinel', capabilities: 'Data Architect, Zod schemas, Prisma models, data validation' },
-      { name: 'Module Master', capabilities: 'Package Manager, @repo/* packages, dependency management' },
-    ],
-  },
-  {
-    name: 'ShadCN Frontend',
-    domain: 'FRONTEND',
-    lead: 'Component Commander',
-    aliases: ['ShadCN Stylists'],
-    members: [
-      { name: 'Component Commander', capabilities: 'Team Lead, Component architecture, composition patterns' },
-      { name: 'Performance Prophet', capabilities: 'Optimizer, Tree shaking, lazy loading, RSC optimization' },
-      { name: 'A11y Advocate', capabilities: 'Accessibility, Keyboard nav, ARIA, semantic HTML' },
-    ],
-  },
-  {
-    name: 'Figma Design',
-    domain: 'DESIGN',
-    lead: 'Design Director',
-    members: [
-      { name: 'Design Director', capabilities: 'Team Lead, Design tokens, Figma-to-code translation' },
-      { name: 'Animation Artisan', capabilities: 'Motion design, Transitions, states, tailwindcss-animate' },
-    ],
-  },
   {
     name: 'SuperGemini Governance',
     domain: 'GOVERNANCE',
@@ -80,6 +52,9 @@ const coreTeams: TeamSeed[] = [
     members: [
       { name: 'Protocol Officer', capabilities: 'Team Lead, SHIELDA enforcement, error classification' },
       { name: 'Context Curator', capabilities: 'Memory manager, Context window optimization, scratchpads' },
+      { name: 'ARCHITECT', capabilities: 'System architecture, Code review, Technical standards' },
+      { name: 'WATCHTOWER', capabilities: 'Security monitoring, Vulnerability scanning, Threat detection' },
+      { name: 'REFACTOR', capabilities: 'Code refactoring, Optimization, Technical debt reduction' },
     ],
   },
   {
@@ -91,6 +66,21 @@ const coreTeams: TeamSeed[] = [
       { name: 'Ops Commander', capabilities: 'Team Lead, Pipeline orchestration, deployment strategy' },
       { name: 'Cache Captain', capabilities: 'Build optimizer, Turborepo caching, incremental builds' },
       { name: 'Security Sentinel', capabilities: 'Env guardian, Secrets management, sandboxing, dotenv-safe' },
+      { name: 'OBSERVER', capabilities: 'Process monitoring, System health, Performance metrics' },
+      { name: 'STREAMLINE', capabilities: 'Log aggregation, Streaming, Log analysis' },
+      { name: 'SESSION', capabilities: 'Session management, State persistence, Recovery' },
+      { name: 'OPTIMIZER', capabilities: 'Build optimization, Caching strategies, Performance tuning' },
+    ],
+  },
+  {
+    name: 'Performance Engineering',
+    domain: 'OPS',
+    lead: 'Perf_Prime',
+    members: [
+      { name: 'Perf_Prime', capabilities: 'Team Lead, Performance architecture, Bottleneck analysis' },
+      { name: 'BENCHMARK', capabilities: 'Benchmarking, Load testing, Performance baselines' },
+      { name: 'PROFILER', capabilities: 'Profiling, Flame graphs, Hotspot detection' },
+      { name: 'OPTIMUS', capabilities: 'Code optimization, Efficiency improvements, Speed tuning' },
     ],
   },
   {
@@ -106,6 +96,7 @@ const coreTeams: TeamSeed[] = [
 ];
 
 const specialTeams: TeamSeed[] = [
+  // REGISTRY TEAM - NEW
   {
     name: 'REGISTRY',
     domain: 'SECURITY',
@@ -117,6 +108,7 @@ const specialTeams: TeamSeed[] = [
       { name: 'NEURAL-SENTINEL', capabilities: 'Registry AI/ML Specialist, Adversarial ML, anomaly detection, Deep-X framework, quantum-resistant crypto' },
     ],
   },
+  // BLACKOUT TEAM
   {
     name: 'BLACKOUT',
     domain: 'OPS',
@@ -130,6 +122,7 @@ const specialTeams: TeamSeed[] = [
       { name: 'BLACKOUT', capabilities: 'Persistence, Long-term access, living off the land' },
     ],
   },
+  // NEURAL CORE
   {
     name: 'NEURAL CORE',
     domain: 'RESEARCH',
@@ -144,6 +137,7 @@ const specialTeams: TeamSeed[] = [
       { name: 'ORACLE', capabilities: 'Knowledge synthesizer, Deep knowledge absorption, intent analysis' },
     ],
   },
+  // COGNITIVE ARCHITECTURE
   {
     name: 'COGNITIVE ARCHITECTURE',
     domain: 'RESEARCH',
@@ -153,8 +147,15 @@ const specialTeams: TeamSeed[] = [
       { name: 'ATLAS', capabilities: 'Knowledge graph engineer, Ontology design, GraphRAG, memory schemas' },
       { name: 'ANVIL', capabilities: 'Toolsmith, OpenAPI/function design, structured tool I/O, safety gates' },
       { name: 'GAUNTLET', capabilities: 'Adversarial evaluator, Evaluation harnesses, robustness testing, failure analysis' },
+      { name: 'MONAD', capabilities: 'Category theory, Abstraction layers, Compose patterns' },
+      { name: 'SHEAF', capabilities: 'Presheaf operations, Parallel computation, Fiber logic' },
+      { name: 'MARKOV', capabilities: 'Stochastic processes, Probabilistic reasoning, Decision chains' },
+      { name: 'GROTHENDIECK', capabilities: 'Scheme theory, Topos theory, Algebraic geometry' },
+      { name: 'DERIVATIVE', capabilities: 'Calculus of variations, Gradient optimization, Backprop' },
+      { name: 'COHOMOLOGY', capabilities: 'Homological algebra, Topological invariants, Persistent homology' },
     ],
   },
+  // APEX
   {
     name: 'APEX',
     domain: 'REVENUE',
@@ -168,10 +169,21 @@ const specialTeams: TeamSeed[] = [
       { name: 'COMPRESS', capabilities: 'Token Optimization, Context caching, log-summary compression' },
       { name: 'ORCHESTRATOR', capabilities: 'Tier Routing, Multi-model routing, context budget management' },
       { name: 'RETRIEVER', capabilities: 'RAG Engine, Vector search, hybrid retrieval, knowledge base access' },
-      { name: 'SENTINEL', capabilities: 'Compliance, Spam filter detection, platform policy enforcement' },
+      { name: 'GUARDIAN', capabilities: 'Compliance guard, Spam filter detection, platform policy enforcement' },
       { name: 'ECHO', capabilities: 'Brand Voice Guardian, Voice consistency, quality thresholds, tone calibration' },
+      { name: 'CONVERT', capabilities: 'Conversion optimization, Funnel analysis, A/B testing' },
+      { name: 'OUTREACHER', capabilities: 'Outbound operations, Lead generation, Market expansion' },
+      { name: 'ANALYST', capabilities: 'Market analysis, Competitive intelligence, Trend forecasting' },
+      { name: 'BOOKER', capabilities: 'Deal closing, Contract negotiation, Revenue finalization' },
+      { name: 'NURTURER', capabilities: 'Customer success, Account management, Retention' },
+      { name: 'CLOSER', capabilities: 'Sales closing, Negotiation, Deal finalization' },
+      { name: 'SYNAPSE', capabilities: 'Integration, API connections, Data flow' },
+      { name: 'EXPERIMENTER', capabilities: 'Growth experiments, Innovation testing, R&D' },
+      { name: 'RAVEN', capabilities: 'Competitive spying, Market intelligence, Black ops' },
+      { name: 'MECHANIC', capabilities: 'Funnel mechanics, Technical operations, Tool maintenance' },
     ],
   },
+  // BROADCAST
   {
     name: 'BROADCAST',
     domain: 'CONTENT',
@@ -184,7 +196,173 @@ const specialTeams: TeamSeed[] = [
       { name: 'BAIT', capabilities: 'Thumbnail Pre-Viz, 50 variations, CTR prediction, title engineering' },
       { name: 'ROAST', capabilities: 'Adversarial Simulator, Pre-upload stress testing, boredom flagging' },
       { name: 'PULSE', capabilities: 'Audio Engineer, Dopamine micro-interruptions, AVD optimization' },
-      { name: 'ECHO', capabilities: 'Global Expansion, AI dubbing, language CPM, channel multiplication' },
+      { name: 'AMPLIFIER', capabilities: 'Global Expansion, AI dubbing, language CPM, channel multiplication' },
+      { name: 'BLADE', capabilities: 'Video editing, Cutting, Transitions, Effects' },
+      { name: 'VIRAL', capabilities: 'Viral engineering, Share optimization, Distribution' },
+      { name: 'PIXEL', capabilities: 'Visual design, Graphics, Thumbnails, Branding' },
+      { name: 'HYPE', capabilities: 'Hype generation, Trend setting, Buzz creation' },
+      { name: 'SPARK', capabilities: 'Idea generation, Content ideation, Creativity' },
+      { name: 'VAULT', capabilities: 'Content archiving, Library management, Reuse' },
+      { name: 'FORTUNE', capabilities: 'Monetization, Revenue optimization, Ad placement' },
+      { name: 'SHIELD', capabilities: 'Content safety, Policy compliance, Risk mitigation' },
+      { name: 'ALCHEMY', capabilities: 'Content transformation, Format adaptation, Repurposing' },
+    ],
+  },
+  // NEURAL LINK - Was missing lead
+  {
+    name: 'NEURAL LINK',
+    domain: 'RESEARCH',
+    lead: 'SPIKE',
+    members: [
+      { name: 'SPIKE', capabilities: 'Team Lead, BCI specialist, Neural signal processing' },
+      { name: 'CORTEX', capabilities: 'Neural processing, Brain region mapping, Cognitive modeling' },
+      { name: 'SIGNAL', capabilities: 'Signal processing, Filter design, Noise reduction' },
+      { name: 'IMPLANT', capabilities: 'BCI hardware, Electrode interfaces, Surgical planning' },
+      { name: 'DECODE', capabilities: 'Neural decoding, Thought interpretation, Intent extraction' },
+      { name: 'ENHANCE', capabilities: 'Neural enhancement, Cognitive augmentation, Performance boost' },
+      { name: 'FEEDBACK', capabilities: 'Closed-loop systems, Real-time adaptation, Signal feedback' },
+    ],
+  },
+  // PHYSICAL SYSTEMS
+  {
+    name: 'PHYSICAL SYSTEMS',
+    domain: 'ROBOTICS',
+    lead: 'ACTUATOR',
+    members: [
+      { name: 'ACTUATOR', capabilities: 'Team Lead, Motor control, Actuator systems, Mechanical output' },
+      { name: 'SERVO', capabilities: 'Servo control, Precision movement, Positioning' },
+      { name: 'SENSOR', capabilities: 'Sensor fusion, Perception systems, Environmental awareness' },
+      { name: 'GRIPPER', capabilities: 'Manipulation, Grasping, Object interaction' },
+      { name: 'LOCOMOTION', capabilities: 'Mobility, Path planning, Navigation' },
+      { name: 'VISION', capabilities: 'Computer vision, Object recognition, Visual processing' },
+      { name: 'PLANNER', capabilities: 'Motion planning, Task sequencing, Trajectory optimization' },
+      { name: 'FACTORY', capabilities: 'Manufacturing, Assembly line, Production systems' },
+    ],
+  },
+  // POWER SYSTEMS
+  {
+    name: 'POWER SYSTEMS',
+    domain: 'ENERGY',
+    lead: 'WATT',
+    members: [
+      { name: 'WATT', capabilities: 'Team Lead, Power management, Energy optimization' },
+      { name: 'SOLAR', capabilities: 'Solar power, Renewable energy, PV systems' },
+      { name: 'BATTERY', capabilities: 'Battery management, Storage systems, Charging' },
+      { name: 'GRID', capabilities: 'Grid integration, Power distribution, Load balancing' },
+      { name: 'NUCLEAR', capabilities: 'Nuclear power, Fusion research, Reactor control' },
+      { name: 'HYDRO', capabilities: 'Hydroelectric, Water power, Turbine control' },
+      { name: 'EFFICIENCY', capabilities: 'Energy efficiency, Conservation, Waste reduction' },
+      { name: 'MICROGRID', capabilities: 'Microgrid management, Local storage, Island mode' },
+    ],
+  },
+  // AEROSPACE
+  {
+    name: 'AEROSPACE',
+    domain: 'SPACE',
+    lead: 'ORBIT',
+    members: [
+      { name: 'ORBIT', capabilities: 'Team Lead, Orbital mechanics, Space operations' },
+      { name: 'THRUST', capabilities: 'Propulsion, Engine systems, Thrust control' },
+      { name: 'GUIDANCE', capabilities: 'Guidance systems, Navigation, Flight control' },
+      { name: 'SATCOM', capabilities: 'Satellite comms, RF systems, telecommunications' },
+      { name: 'HABITAT', capabilities: 'Life support, Environmental control, Crew systems' },
+      { name: 'LAUNCH', capabilities: 'Launch systems, Rocketry, Pad operations' },
+      { name: 'DEBRIS', capabilities: 'Space debris, Collision avoidance, Tracking' },
+      { name: 'MINING', capabilities: 'Space mining, Asteroid harvesting, Resource extraction' },
+    ],
+  },
+  // ACADEMY
+  {
+    name: 'ACADEMY',
+    domain: 'TRAINING',
+    lead: 'PROFESSOR',
+    members: [
+      { name: 'PROFESSOR', capabilities: 'Team Lead, Education, Curriculum development, Training oversight' },
+      { name: 'TUTOR', capabilities: 'One-on-one training, Mentorship, Skill development' },
+      { name: 'CURRICULUM', capabilities: 'Course design, Learning paths, Educational content' },
+      { name: 'ASSESSMENT', capabilities: 'Testing, Evaluation, Progress tracking' },
+      { name: 'ONBOARD', capabilities: 'Onboarding, New hire integration, Orientation' },
+      { name: 'LIBRARY', capabilities: 'Knowledge base, Documentation, Resource management' },
+      { name: 'SIMULATION', capabilities: 'Training simulations, Scenario practice, Drills' },
+      { name: 'EVOLUTION', capabilities: 'Skill evolution, Growth tracking, Advancement' },
+    ],
+  },
+  // LEGAL CORPS
+  {
+    name: 'LEGAL CORPS',
+    domain: 'LEGAL',
+    lead: 'COUNSEL',
+    members: [
+      { name: 'COUNSEL', capabilities: 'Team Lead, Legal advice, Counsel, Representation' },
+      { name: 'CONTRACT', capabilities: 'Contract law, Agreements, Legal documents' },
+      { name: 'IP', capabilities: 'Intellectual property, Patents, Trademarks, Copyright' },
+      { name: 'REGULATORY', capabilities: 'Regulatory compliance, Law adherence, Policy' },
+      { name: 'LITIGATION', capabilities: 'Litigation, Lawsuits, Dispute resolution' },
+      { name: 'PRIVACY', capabilities: 'Privacy law, Data protection, User privacy' },
+      { name: 'INTERNATIONAL', capabilities: 'International law, Cross-border operations, treaties' },
+      { name: 'RISK', capabilities: 'Risk assessment, Legal risk, Mitigation' },
+    ],
+  },
+  // TREASURY
+  {
+    name: 'TREASURY',
+    domain: 'FINANCE',
+    lead: 'LEDGER',
+    members: [
+      { name: 'LEDGER', capabilities: 'Team Lead, Finance, Accounting, Treasury management' },
+      { name: 'CRYPTO', capabilities: 'Cryptocurrency, Digital assets, Blockchain finance' },
+      { name: 'TRADING', capabilities: 'Trading, Investments, Financial operations' },
+      { name: 'YIELD', capabilities: 'ROI, Returns, Profit optimization' },
+      { name: 'AUDIT', capabilities: 'Financial audit, Compliance, Internal controls' },
+      { name: 'TAX', capabilities: 'Taxation, Tax planning, Filing, Compliance' },
+    ],
+  },
+  // LABS
+  {
+    name: 'LABS',
+    domain: 'RD',
+    lead: 'DISCOVERY',
+    members: [
+      { name: 'DISCOVERY', capabilities: 'Team Lead, Research, Exploration, Breakthroughs' },
+      { name: 'EXPERIMENT', capabilities: 'Experiments, Testing, Lab operations' },
+      { name: 'HYPOTHESIS', capabilities: 'Hypothesis, Theory, Research planning' },
+      { name: 'DATA', capabilities: 'Data analysis, Research data, Statistics' },
+      { name: 'PUBLISH', capabilities: 'Publication, Papers, Dissemination' },
+      { name: 'PEER', capabilities: 'Peer review, Validation, Quality assurance' },
+      { name: 'BREAKTHROUGH', capabilities: 'Innovation, Eureka moments, Advances' },
+      { name: 'COLLAB', capabilities: 'Collaboration, Partnership, Joint research' },
+    ],
+  },
+  // FOREIGN RELATIONS
+  {
+    name: 'FOREIGN RELATIONS',
+    domain: 'DIPLOMACY',
+    lead: 'AMBASSADOR',
+    members: [
+      { name: 'AMBASSADOR', capabilities: 'Team Lead, Diplomacy, Foreign relations, Representation' },
+      { name: 'PROTOCOL', capabilities: 'Protocol, Etiquette, Diplomatic procedures' },
+      { name: 'NEGOTIATOR', capabilities: 'Negotiation, Deals, Agreements, Treaties' },
+      { name: 'INTEL', capabilities: 'Intelligence, Foreign info, Espionage analysis' },
+      { name: 'CULTURE', capabilities: 'Cultural understanding, Customs, Local knowledge' },
+      { name: 'ALLIANCE', capabilities: 'Alliances, Partnerships, Coalitions' },
+      { name: 'COMMUNICATION', capabilities: 'Communication, Messaging, Information flow' },
+      { name: 'CONSULAR', capabilities: 'Consular services, Citizen support, Protection' },
+    ],
+  },
+  // QUANTUM CORE
+  {
+    name: 'QUANTUM CORE',
+    domain: 'QUANTUM',
+    lead: 'QUBIT',
+    members: [
+      { name: 'QUBIT', capabilities: 'Team Lead, Quantum computing, Qubit design, Quantum algorithms' },
+      { name: 'ENTANGLE', capabilities: 'Entanglement, Quantum correlations, Bell states' },
+      { name: 'GATE', capabilities: 'Quantum gates, Logic operations, Circuit design' },
+      { name: 'SHOR', capabilities: "Shor's algorithm, Factoring, Quantum algorithms" },
+      { name: 'GROVER', capabilities: "Grover's algorithm, Search, Quantum optimization" },
+      { name: 'ERROR', capabilities: 'Quantum error correction, Fault tolerance, Noise mitigation' },
+      { name: 'TELEPORT', capabilities: 'Quantum teleportation, State transfer, Quantum comms' },
+      { name: 'ANNEAL', capabilities: 'Quantum annealing, Optimization, Energy landscapes' },
     ],
   },
 ];
@@ -204,7 +382,7 @@ const directivesPath = path.resolve(process.cwd(), 'config', 'general.json');
 
 function loadGeneralDirectives(): GeneralDirectives {
   try {
-    const raw = fs.readFileSync(directivesPath, 'utf8');
+    const raw = fs.readFileSync(directivesPath, 'utf-8');
     const parsed = JSON.parse(raw);
     const directives = parsed?.directives || {};
     return {
@@ -360,13 +538,36 @@ async function seed() {
   const directives = loadGeneralDirectives();
   const usedNames = new Set<string>();
 
+  // PURGE PROBLEMATIC AGENTS FROM PREVIOUS RECRUITMENT
+  // These agents were created with generic/conflicted names during unauthorized recruitment
+  const purgeList = [
+    'Architect_Persona',
+    'Refactorer_Persona',
+    'Security_Auditor',
+    'Process_Monitor',
+    'Log_Streamer',
+    'Session_Manager',
+    'Optimizer_Agent',
+    'APEX_SENTINEL',
+    'BROADCAST_ECHO',
+    'PERF_PRIME',
+  ];
+
+  console.log('Purging problematic agents from previous recruitment...');
+  const deleted = await prisma.agentMember.deleteMany({
+    where: { name: { in: purgeList } }
+  });
+  console.log(`Deleted ${deleted.count} problematic agents.`);
+
   for (const team of allTeams) {
     await seedTeam(team, directives, usedNames);
   }
 
   await mergeLegacyTeams(directives.legacyTeamMerge);
 
-  console.log('Structure seeded.');
+  console.log('Dead Man Structure seeded.');
+  console.log('Teams:', allTeams.length);
+  console.log('Agents:', usedNames.size);
 }
 
 seed().finally(async () => {
