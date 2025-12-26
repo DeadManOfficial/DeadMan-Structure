@@ -107,6 +107,17 @@ const coreTeams: TeamSeed[] = [
 
 const specialTeams: TeamSeed[] = [
   {
+    name: 'REGISTRY',
+    domain: 'SECURITY',
+    lead: 'HIVE-ARCHITECT',
+    aliases: ['Registry Team'],
+    members: [
+      { name: 'HIVE-ARCHITECT', capabilities: 'Team Lead, Windows Registry Infrastructure, Hive architecture, COM/CLSID, zero-defect design, enterprise-scale registry' },
+      { name: 'ARCHAEOLOGIST', capabilities: 'Registry Persistence Hunter, IFEO detection, Winlogon hooks, APT hunting, registry forensics, fileless malware detection' },
+      { name: 'NEURAL-SENTINEL', capabilities: 'Registry AI/ML Specialist, Adversarial ML, anomaly detection, Deep-X framework, quantum-resistant crypto' },
+    ],
+  },
+  {
     name: 'BLACKOUT',
     domain: 'OPS',
     lead: 'SPECTRE',

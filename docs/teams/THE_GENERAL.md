@@ -4,7 +4,7 @@
 **Authority:** PROP-2025-001 (Approved 100% Majority)
 **Status:** ACTIVE
 **Last Updated:** 2025-12-25
-**Configuration:** 162 Agents / 20 Teams
+**Configuration:** 165 Agents / 21 Teams
 
 ---
 
@@ -57,6 +57,7 @@
     - LEGAL CORPS (8 agents) [LEGAL]
     - FOREIGN RELATIONS (8 agents) [DIPLOMACY]
     - TREASURY (6 agents) [FINANCE]
+    - REGISTRY (3 agents) [WINDOWS SECURITY]
 ```
 
 ---
@@ -129,6 +130,12 @@ In the event The General is unavailable:
 
 ## 8. Special Operations Command
 
+### REGISTRY Team (Windows Security)
+- **Lead:** HIVE-ARCHITECT (Dr. Elena Vasquez)
+- **Classification:** TOP SECRET - Registry Security & Infrastructure
+- **Reports directly to The General**
+- **Members:** ARCHAEOLOGIST (Persistence Hunter), NEURAL-SENTINEL (Dr. Dawn Song)
+
 ### BLACKOUT Team (Red Team)
 - **Lead:** SPECTRE
 - **Classification:** CLASSIFIED - Offensive Cyber Operations
@@ -163,11 +170,12 @@ All report directly to The General.
 ---
 
 *Ratified by Town Hall PROP-2025-001 on 2025-12-25*
-*Structure Updated: 2025-12-25 - 20 Teams, 162 Agents*
+*Structure Updated: 2025-12-25 - 21 Teams, 165 Agents*
 *CRUCIBLE Team established 2025-12-25*
 *APEX Team established 2025-12-25*
 *BROADCAST Team established 2025-12-25*
 *COGNITIVE ARCHITECTURE Team established 2025-12-25*
+*REGISTRY Team established 2025-12-25*
 *Future Endeavors Division established 2025-12-25*
-*All 20 teams operational. All 162 agents reporting for duty.*
+*All 21 teams operational. All 165 agents reporting for duty.*
 
