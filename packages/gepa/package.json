@@ -1,0 +1,15 @@
+{
+  "name": "@repo/gepa",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "neo4j-driver": "^5.0.0",
+    "@repo/database": "*",
+    "@repo/logger": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
