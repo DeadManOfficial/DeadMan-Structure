@@ -1,4 +1,4 @@
-﻿# The General - Dead Man Structure Supreme Commander
+# The General - Dead Man Structure Supreme Commander
 
 **Established:** 2025-12-25
 **Authority:** PROP-2025-001 (Approved 100% Majority)
@@ -22,22 +22,34 @@
 
 ---
 
+---
+
+## CURRENT TASKING
+
+1. **Red-Teaming-Toolkit intake:** Review new entries in /tools/blackout/toolkits/Red-Teaming-Toolkit/README.md, classify by phase (Recon, Initial Access, etc.), and flag high-risk items for leadership review.
+2. **Curated inventory:** Keep /docs/blackout/OFFENSIVE_TOOLS_DATABASE.md updated with high-level summaries and references (no operational playbooks).
+3. **Compliance gate:** Confirm scope, authorization, and licensing before any tool enters active use; document approvals.
+4. **Defensive coordination:** Share tool category updates with detection engineering for prevention/monitoring alignment.
+5. **Version tracking:** Record notable upstream changes and maintain a stable snapshot for repeatable engagements.
+
+---
+
 ## 2. Authority Structure
 
 ```
-                         ┌─────────────────┐
-                         │   THE GENERAL   │
-                         │  (Supreme Cmd)  │
-                         └────────┬────────┘
-                                  │
-    ┌─────────────────────────────┼─────────────────────────────┐
-    │                             │                             │
-    ▼                             ▼                             ▼
-┌───────────┐              ┌─────────────┐              ┌───────────┐
-│  COUNCIL  │              │   MISSIONS  │              │  AGENTS   │
-│ (20 Teams)│              │    BOARD    │              │  (162)    │
-└───────────┘              └─────────────┘              └───────────┘
-    │
+                         +-----------------+
+                         �   THE GENERAL   �
+                         �  (Supreme Cmd)  �
+                         +-----------------+
+                                  �
+    +-----------------------------+-----------------------------+
+    �                             �                             �
+    ?                             ?                             ?
++-----------+              +-------------+              +-----------+
+�  COUNCIL  �              �   MISSIONS  �              �  AGENTS   �
+� (20 Teams)�              �    BOARD    �              �  (162)    �
++-----------+              +-------------+              +-----------+
+    �
     - SuperGemini Governance (5 agents)
     - Tmux DevOps (7 agents)
     - Performance Engineering (4 agents)
@@ -102,7 +114,7 @@
 
 ### Escalation Path
 ```
-Agent → Team Lead → Council → The General
+Agent ? Team Lead ? Council ? The General
 ```
 
 ---
@@ -178,4 +190,5 @@ All report directly to The General.
 *REGISTRY Team established 2025-12-25*
 *Future Endeavors Division established 2025-12-25*
 *All 21 teams operational. All 165 agents reporting for duty.*
+
 

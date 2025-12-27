@@ -1,0 +1,123 @@
+================================================================================
+COPY THIS ENTIRE SCRIPT AND PASTE INTO YOUR BROWSER CONSOLE
+================================================================================
+
+This will extract the FULL PROMPT CONTENT from each prompt page (not just links)
+Estimated time: 15-20 minutes for ~984 prompts
+
+================================================================================
+COPY FROM HERE:
+================================================================================
+
+(async function() {
+  console.log('🚀 Starting FULL extraction...');
+  const allPrompts = [];
+  const seen = new Set();
+
+  // Extract prompt links from listing page
+  function getLinks() {
+    const links = [];
+    document.querySelectorAll('a[href*="/prompt?prompt="]').forEach(link => {
+      if (!seen.has(link.href)) {
+        seen.add(link.href);
+        const h3 = link.querySelector('h3') || link.closest('div')?.querySelector('h3');
+        links.push({url: link.href, title: h3?.textContent?.trim() || 'Untitled'});
+      }
+    });
+    return links;
+  }
+
+  // Extract full prompt text from individual prompt page
+  async function getFullText(url) {
+    window.location.href = url;
+    await new Promise(r => setTimeout(r, 2500));
+
+    const text = document.body.innerText;
+    const idx = text.indexOf('ChatGPT Prompt');
+    if (idx === -1) return null;
+
+    const copyIdx = text.indexOf('Copy', idx);
+    if (copyIdx === -1) return null;
+
+    let prompt = text.substring(idx + 13, copyIdx).trim();
+
+    // Clean up
+    prompt = prompt.replace(/^Affiliate Script Creator/g, '').replace(/\n{3,}/g, '\n\n').trim();
+
+    const title = document.querySelector('h1')?.textContent?.trim() || 'Untitled';
+
+    return {title, url, fullPromptText: prompt};
+  }
+
+  // Start
+  let links = getLinks();
+  console.log('📄 Page 1:', links.length, 'prompts');
+
+  for (let i = 0; i < links.length; i++) {
+    console.log(`[${i+1}/${links.length}] ${links[i].title.substring(0,30)}...`);
+    const result = await getFullText(links[i].url);
+    if (result) {
+      allPrompts.push(result);
+      console.log('    ✅', result.fullPromptText.length, 'chars');
+    }
+
+    // Save every 10
+    if ((i + 1) % 10 === 0) {
+      const blob = new Blob([JSON.stringify(allPrompts, null, 2)], {type: 'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `godofprompt_FULL_${allPrompts.length}.json`;
+      a.click();
+      console.log('   💾 Saved checkpoint');
+    }
+  }
+
+  // Go to next pages
+  for (let page = 2; page <= 82; page++) {
+    const next = [...document.querySelectorAll('a')].find(a => a.textContent.trim() === 'Next');
+    if (!next) break;
+
+    next.click();
+    await new Promise(r => setTimeout(r, 3000));
+
+    const pageLinks = getLinks().filter(l => !allPrompts.some(p => p.url === l.url));
+    if (pageLinks.length === 0) break;
+
+    console.log(`\n📄 Page ${page}:`, pageLinks.length, 'prompts');
+
+    for (let i = 0; i < pageLinks.length; i++) {
+      console.log(`[${allPrompts.length + 1}] ${pageLinks[i].title.substring(0,30)}...`);
+      const result = await getFullText(pageLinks[i].url);
+      if (result) {
+        allPrompts.push(result);
+        console.log('    ✅', result.fullPromptText.length, 'chars');
+      }
+
+      if (allPrompts.length % 10 === 0) {
+        const blob = new Blob([JSON.stringify(allPrompts, null, 2)], {type: 'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `godofprompt_FULL_${allPrompts.length}.json`;
+        a.click();
+      }
+    }
+
+    if (allPrompts.length >= 900) break;
+  }
+
+  // Final save
+  const blob = new Blob([JSON.stringify(allPrompts, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `godofprompt_FULL_FINAL_${allPrompts.length}.json`;
+  a.click();
+
+  console.log('\n✨ DONE! Total:', allPrompts.length, 'full prompts');
+  console.log('📁 Downloaded: godofprompt_FULL_FINAL_' + allPrompts.length + '.json');
+
+  return allPrompts;
+})();
+
+================================================================================
+END OF SCRIPT
+================================================================================

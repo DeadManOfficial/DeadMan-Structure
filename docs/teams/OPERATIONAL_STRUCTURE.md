@@ -90,6 +90,18 @@
 
 ---
 
+---
+
+## CURRENT TASKING
+
+1. **Red-Teaming-Toolkit intake:** Review new entries in /tools/blackout/toolkits/Red-Teaming-Toolkit/README.md, classify by phase (Recon, Initial Access, etc.), and flag high-risk items for leadership review.
+2. **Curated inventory:** Keep /docs/blackout/OFFENSIVE_TOOLS_DATABASE.md updated with high-level summaries and references (no operational playbooks).
+3. **Compliance gate:** Confirm scope, authorization, and licensing before any tool enters active use; document approvals.
+4. **Defensive coordination:** Share tool category updates with detection engineering for prevention/monitoring alignment.
+5. **Version tracking:** Record notable upstream changes and maintain a stable snapshot for repeatable engagements.
+
+---
+
 ## 1. Organizational Chart
 
 ```
@@ -332,3 +344,4 @@ Level 4: The General decides
 *APEX Team established 2025-12-25*
 *BROADCAST Team established 2025-12-25*
 *All agents reporting for duty.*
+

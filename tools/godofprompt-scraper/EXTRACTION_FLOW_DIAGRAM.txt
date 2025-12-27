@@ -1,0 +1,378 @@
+GOD OF PROMPT - EXTRACTION STRATEGY FLOWCHART
+═══════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          START                                           │
+│            https://godofprompt.com/prompts                               │
+└────────────────────────────┬────────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      LOAD SCRIPT                                         │
+│           godofprompt_all_in_one.js                                     │
+│                                                                         │
+│  • Opens Network Monitor (intercepts API calls)                         │
+│  • Inspects DOM (finds prompt elements)                                 │
+│  • Sets up testing framework                                            │
+└────────────────────────────┬────────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   RUN: GodOfPrompt.auto()                                │
+│                                                                         │
+│  Automatically tests 8 pagination methods to find what works            │
+└────────────────────────────┬────────────────────────────────────────────┘
+                             │
+                             ▼
+        ┌────────────────────┴────────────────────┐
+        │                                           │
+        ▼                                           ▼
+┌──────────────────┐                    ┌──────────────────┐
+│   METHOD TEST    │                    │   PAGE SCAN      │
+│                  │                    │                  │
+│ Tests all 8:     │                    │ • Find prompts   │
+│ 1. Infinite      │                    │ • Find pagination│
+│    Scroll        │                    │ • Find search    │
+│ 2. URL Params    │                    │ • Find categories│
+│ 3. Webflow API   │                    │ • Find buttons   │
+│ 4. Client Data   │                    └──────────────────┘
+│ 5. Next Button   │
+│ 6. Direct URLs   │
+│ 7. Search        │
+│ 8. Categories    │
+└────────┬─────────┘
+         │
+         ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│              ANALYZE RESULTS                                             │
+│                                                                         │
+│  Which methods returned: works: true                                    │
+└────────────────────────────┬────────────────────────────────────────────┘
+                             │
+                 ┌───────────┴───────────┐
+                 │                       │
+                 ▼                       ▼
+          ┌─────────────┐         ┌─────────────┐
+          │ METHOD WORKS│         │ NONE WORK   │
+          └──────┬──────┘         └──────┬──────┘
+                 │                       │
+                 ▼                       ▼
+    ┌──────────────────────┐    ┌──────────────────────┐
+    │ AUTO-EXTRACT         │    │ MANUAL INSPECTION    │
+    │                      │    │                      │
+    │ GodOfPrompt.extractAll()  │ • Check Network tab   │
+    │                      │    │ • Check Console      │
+    │ Automatically picks   │    │ • Try manual nav     │
+    │ best method          │    │ • Contact support    │
+    └──────────┬───────────┘    └──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      EXTRACTION PROCESS                                  │
+│                                                                         │
+│  [Depending on working method]                                          │
+│                                                                         │
+│  INFINITE SCROLL:                                                       │
+│  ┌─────────────────────────────────────────────────────────┐           │
+│  │ WHILE (new content loading):                             │           │
+│  │   • Scroll to bottom                                     │           │
+│  │   • Wait 2 seconds                                       │           │
+│  │   • Extract new prompts                                  │           │
+│  │   • Deduplicate by title                                 │           │
+│  │ END WHILE                                                │           │
+│  └─────────────────────────────────────────────────────────┘           │
+│                                                                         │
+│  URL PARAMETERS:                                                        │
+│  ┌─────────────────────────────────────────────────────────┐           │
+│  │ FOR page = 1 TO 82:                                      │           │
+│  │   • Fetch URL + "?page=" + page                          │           │
+│  │   • Parse HTML response                                  │           │
+│  │   • Extract prompts                                      │           │
+│  │   • Wait 500ms (rate limit)                              │           │
+│  │ NEXT page                                                │           │
+│  └─────────────────────────────────────────────────────────┘           │
+│                                                                         │
+│  WEBFLOW API:                                                           │
+│  ┌─────────────────────────────────────────────────────────┐           │
+│  │ endpoint = "/_api/v2/collections/{id}/items"             │           │
+│  │ WHILE (has items):                                       │           │
+│  │   • Fetch endpoint + "?offset=" + offset                 │           │
+│  │   • Parse JSON response                                  │           │
+│  │   • Append to results                                    │           │
+│  │   • offset += limit                                      │           │
+│  │ END WHILE                                                │           │
+│  └─────────────────────────────────────────────────────────┘           │
+│                                                                         │
+└────────────────────────────┬────────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    DATA PROCESSING                                       │
+│                                                                         │
+│  • Remove duplicates (by title)                                        │
+│  • Validate data (check for null/empty)                                │
+│  • Count total: should be ~984                                         │
+│  • Format: JSON array of prompt objects                                │
+└────────────────────────────┬────────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      EXPORT                                              │
+│                                                                         │
+│  Download: all-prompts-[method].json                                    │
+│                                                                         │
+│  [                                                                       │
+│    {                                                                     │
+│      "title": "Prompt Title",                                           │
+│      "description": "Full description...",                              │
+│      "link": "https://godofprompt.com/prompt/...",                      │
+│      "image": "https://...",                                            │
+│      "page": 1                                                          │
+│    },                                                                    │
+│    ... (984 total)                                                      │
+│  ]                                                                       │
+│                                                                         │
+└────────────────────────────┬────────────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          COMPLETE!                                       │
+│                                                                         │
+│  ✓ 984 prompts extracted                                                │
+│  ✓ Saved to Downloads folder                                           │
+│  ✓ Ready for use                                                       │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════
+
+DETAILED METHOD FLOWCHARTS
+
+═══════════════════════════════════════════════
+
+METHOD 1: INFINITE SCROLL (Most Common)
+────────────────────────────────────
+
+┌──────────────┐
+│ Start at     │
+│ page 1       │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Count        │
+│ prompts: N   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Scroll to    │
+│ bottom       │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Wait 2 sec   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Count again: │◄─────┐
+│ M            │      │
+└──────┬───────┘      │
+       │              │
+       ▼              │
+  ┌─────────┐         │
+  │ M > N?  │──No ────┘
+  └───┬─────┘
+      │ Yes
+      ▼
+┌──────────────┐
+│ Extract new  │
+│ prompts      │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Add to list  │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Reached 984? │──No──┐
+└──────────────┘     │
+      │ Yes          │
+      ▼              │
+┌──────────────┐     │
+│ Save & Done  │     │
+└──────────────┘     │
+                     │
+         └───────────┘
+
+
+METHOD 2: URL PARAMETERS
+───────────────────────
+
+┌──────────────┐
+│ page = 1     │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Fetch URL +  │
+│ "?page="+page│
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Parse HTML   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Extract      │
+│ 12 prompts   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Add to list  │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ page++       │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ page <= 82?  │──Yes─┐
+└──────────────┘     │
+      │ No           │
+      ▼              │
+┌──────────────┐     │
+│ Save & Done  │     │
+└──────────────┘     │
+                     │
+         └───────────┘
+
+
+METHOD 3: WEBFLOW API
+─────────────────────
+
+┌──────────────┐
+│ Discover     │
+│ API endpoint │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ offset = 0   │
+│ limit = 100  │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Fetch API +  │
+│ query params │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Parse JSON   │
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
+│ Has items?   │──No─┐
+└──────┬───────┘    │
+       │ Yes        │
+       ▼            │
+┌──────────────┐    │
+│ Add items    │    │
+│ to list      │    │
+└──────┬───────┘    │
+       │            │
+       ▼            │
+┌──────────────┐    │
+│ offset +=    │    │
+│ limit        │    │
+└──────┬───────┘    │
+       │            │
+       └────────────┘
+       │
+       ▼
+┌──────────────┐
+│ Save & Done  │
+└──────────────┘
+
+
+═══════════════════════════════════════════════
+
+DECISION TREE
+
+═══════════════════════════════════════════════
+
+                        START
+                          │
+                          ▼
+              ┌─────────────────────┐
+              │ Run automated test  │
+              └──────────┬──────────┘
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Any method works?   │
+              └──────┬─────────┬────┘
+                     │         │
+                    YES        NO
+                     │         │
+                     ▼         ▼
+          ┌──────────────┐  ┌──────────────┐
+          │ Extract      │  │ Manual       │
+          │ automatically│  │ inspection   │
+          └──────┬───────┘  └──────────────┘
+                 │
+                 ▼
+          ┌─────────────────────────┐
+          │ Which method?           │
+          └────┬────────────┬────────┘
+               │            │
+        ┌──────┴──────┐     │
+        ▼             ▼     ▼
+   ┌────────┐   ┌────────┐
+   │Scroll  │   │ URL    │
+   └───┬────┘   └───┬────┘
+       │            │
+       ▼            ▼
+   ┌────────────────────┐
+   │ Scroll to bottom   │
+   │ repeatedly         │
+   └────────┬───────────┘
+            │
+   ┌────────┴──────────┐
+   ▼                   ▼
+┌─────────┐      ┌─────────┐
+│ ~984    │      │ Loop 1-82│
+│ prompts │      │ requests │
+└─────────┘      └─────────┘
+
+═══════════════════════════════════════════════
+
+SUCCESS CRITERIA CHECKLIST
+
+═══════════════════════════════════════════════
+
+✓ Network requests captured (shows in console)
+✓ Pagination elements found (Next button, etc.)
+✓ At least one method shows: works: true
+✓ Can access more than 12 prompts
+✓ Progress counter increases
+✓ No JavaScript errors in console
+✓ File downloads successfully
+✓ JSON file contains ~984 objects
+✓ Each object has: title, description, link
+✓ No duplicate prompts
+
+═══════════════════════════════════════════════

@@ -20,6 +20,35 @@ export default [
   // Base JavaScript rules
   js.configs.recommended,
 
+  // Browser-only scripts (tooling)
+  {
+    files: ['tools/godofprompt-scraper/**/*.js'],
+    languageOptions: {
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        console: 'readonly',
+        fetch: 'readonly',
+        Blob: 'readonly',
+        URL: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        XMLHttpRequest: 'readonly',
+        DOMParser: 'readonly',
+        Event: 'readonly',
+        KeyboardEvent: 'readonly',
+        process: 'readonly',
+      },
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      'no-empty': 'off',
+      'no-case-declarations': 'off',
+    },
+  },
+
   // TypeScript configuration
   {
     files: ['**/*.ts', '**/*.tsx'],

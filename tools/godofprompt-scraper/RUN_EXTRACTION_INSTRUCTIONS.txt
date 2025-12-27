@@ -1,0 +1,82 @@
+=============================================================================
+GOD OF PROMPT - EXTRACTION INSTRUCTIONS
+=============================================================================
+
+THE SCRIPT HAS BEEN CREATED! Follow these steps to extract ALL prompts:
+
+STEP 1: Open Chrome
+  - Open Google Chrome browser
+
+STEP 2: Navigate to God of Prompt
+  - Go to: https://www.godofprompt.ai/prompts?premium=false
+
+STEP 3: Open Developer Console
+  - Press F12 on your keyboard
+  - OR right-click anywhere on the page → select "Inspect"
+  - Click on the "Console" tab at the top of the panel that appears
+
+STEP 4: Load the Script
+  - Open this file in a text editor:
+    C:\Users\Administrator\extract_godofprompt.js
+
+  - Select ALL the text (Ctrl+A)
+  - Copy it (Ctrl+C)
+
+STEP 5: Run the Script
+  - Go back to Chrome's Console tab
+  - Paste the script (Ctrl+V)
+  - Press ENTER
+
+STEP 6: Wait for Extraction
+  - The script will automatically:
+    ✓ Navigate through all 82 pages
+    ✓ Extract every prompt it finds
+    ✓ Save progress every 10 pages
+    ✓ Download a final JSON file with all prompts
+
+  - This will take approximately 3-5 minutes
+  - Watch the progress in the console
+
+STEP 7: Get Your Results
+  - When complete, check your Downloads folder
+  - You'll find: godofprompt_prompts_final_XXX.json
+  - This file contains ALL extracted prompts
+
+=============================================================================
+WHAT YOU'LL GET
+=============================================================================
+
+The JSON file will contain an array of prompt objects, each with:
+  - title: Prompt name
+  - url: Direct link to the prompt
+  - description: Short description
+  - page: Page number where found
+  - extractedAt: Timestamp of extraction
+
+Expected: ~984 prompts from all 82 pages
+
+=============================================================================
+TROUBLESHOOTING
+=============================================================================
+
+Q: Script stops early?
+A: Just refresh the page and run the script again - it will continue from where it left off
+
+Q: Console shows errors?
+A: Clear the console (Ctrl+L) and run the script again
+
+Q: File doesn't download?
+A: Check Chrome's download permissions and allow downloads from this site
+
+Q: Script runs too slow?
+A: Edit the delayBetweenPages value in the script (line 16) to 1500 for faster speed
+
+=============================================================================
+READY TO START!
+=============================================================================
+
+File Location: C:\Users\Administrator\extract_godofprompt.js
+
+Just follow the 6 steps above and you'll have ALL the prompts!
+
+=============================================================================

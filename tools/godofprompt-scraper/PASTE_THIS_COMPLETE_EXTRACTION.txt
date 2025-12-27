@@ -1,0 +1,98 @@
+================================================================================
+COPY THIS AND PASTE INTO YOUR BROWSER CONSOLE (F12 → Console)
+================================================================================
+
+This will visit EACH prompt page and extract the FULL prompt text
+Estimated time: 15-20 minutes for ~984 prompts
+
+================================================================================
+PASTE THIS ENTIRE SCRIPT:
+================================================================================
+
+(async function() {
+  console.log('🚀 Starting COMPLETE extraction...');
+  const allPrompts = [];
+  const seen = new Set();
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function getLinks() {
+    const links = [];
+    document.querySelectorAll('a[href*="/prompt?prompt="]').forEach(link => {
+      if (!seen.has(link.href)) {
+        seen.add(link.href);
+        let card = link;
+        for(let i=0;i<5;i++) { if(card.parentElement) card=card.parentElement; if(card.textContent.length>100) break; }
+        const h = card.querySelector('h2,h3,h4,h5');
+        links.push({url:link.href, title:h?.textContent?.trim()||'Untitled'});
+      }
+    });
+    return links;
+  }
+
+  async function getFull(p) {
+    console.log(`   [${allPrompts.length+1}] ${p.title.substring(0,35)}...`);
+    window.location.href = p.url;
+    await sleep(2500);
+
+    const text = document.body.innerText;
+    const start = text.indexOf('ChatGPT Prompt');
+    if(start===-1) return null;
+
+    const copyIdx = text.indexOf('Copy',start);
+    const howToIdx = text.indexOf('How To Use',start);
+    const end = Math.min(copyIdx!==-1?copyIdx:Infinity, howToIdx!==-1?howToIdx:Infinity);
+
+    if(end===Infinity) return null;
+
+    let full = text.substring(start+13,end).trim().replace(/^Affiliate Script Creator/g,'').replace(/\n{3,}/g,'\n\n').trim();
+    const t = document.querySelector('h1')?.textContent?.trim()||p.title;
+
+    return {title:t,url:p.url,fullPromptText:full,chars:full.length};
+  }
+
+  let links = getLinks();
+  console.log('📄 Page 1:', links.length, 'prompts\n');
+
+  for(let i=0;i<links.length;i++) {
+    const r = await getFull(links[i]);
+    if(r) { allPrompts.push(r); console.log('      ✅',r.chars,'chars'); }
+    if((i+1)%5===0) { const blob=new Blob([JSON.stringify(allPrompts,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`check_${allPrompts.length}.json`; a.click(); console.log('   💾 Saved\n'); }
+  }
+
+  for(let pg=2;pg<=82;pg++) {
+    if(!window.location.href.includes('/prompts?')) { window.location.href='https://www.godofprompt.ai/prompts?premium=false'; await sleep(3000); }
+    const next=[...document.querySelectorAll('a')].find(a=>a.textContent.trim()==='Next');
+    if(!next) { console.log('⚠️ No Next button'); break; }
+    next.click();
+    await sleep(3000);
+
+    const pageLinks=getLinks().filter(l=>!allPrompts.some(p=>p.url===l.url));
+    if(pageLinks.length===0) { console.log('⚠️ No new prompts'); break; }
+
+    console.log(`\n📄 Page ${pg}:`,pageLinks.length,'prompts\n');
+
+    for(let i=0;i<pageLinks.length;i++) {
+      const r=await getFull(pageLinks[i]);
+      if(r) { allPrompts.push(r); console.log(`      ✅ [${allPrompts.length}] ${r.title.substring(0,30)}... (${r.chars} chars)`); }
+      if(allPrompts.length%5===0) { const blob=new Blob([JSON.stringify(allPrompts,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`pg${pg}_${allPrompts.length}.json`; a.click(); }
+      if(allPrompts.length>=900) { console.log('\n✅ Near 900!'); break; }
+    }
+    if(allPrompts.length>=900) break;
+  }
+
+  const blob=new Blob([JSON.stringify(allPrompts,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`COMPLETE_${allPrompts.length}_prompts.json`;
+  a.click();
+
+  console.log('\n✨ DONE!',allPrompts.length,'prompts');
+  console.log('Sample:',allPrompts[0]?.title,'\n',allPrompts[0]?.fullPromptText?.substring(0,200)+'...');
+
+  return allPrompts;
+})();
+
+================================================================================
+END OF SCRIPT
+================================================================================

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>God of Prompt - Auto Extractor</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #00ff00; }
+    #log { white-space: pre-wrap; word-wrap: break-word; }
+    .progress { color: #00ffff; font-weight: bold; }
+    .success { color: #00ff00; }
+    .error { color: #ff0000; }
+  </style>
+</head>
+<body>
+  <h1>🚀 God of Prompt - Full Extraction</h1>
+  <div id="status">Starting...</div>
+  <div id="log"></div>
+
+  <script>
+    (async function() {
+      const logDiv = document.getElementById('log');
+      const statusDiv = document.getElementById('status');
+
+      function log(msg) {
+        logDiv.textContent += msg + '\n';
+        console.log(msg);
+      }
+
+      log('🚀 Starting COMPLETE extraction of ALL prompts...\n');
+      statusDiv.innerHTML = '<span class="progress">⏳ Extracting... (This takes 15-20 minutes)</span>';
+
+      const allPrompts = [];
+      const seen = new Set();
+
+      const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+      function getLinks() {
+        const links = [];
+        document.querySelectorAll('a[href*="/prompt?prompt="]').forEach(link => {
+          if (!seen.has(link.href)) {
+            seen.add(link.href);
+            let card = link;
+            for(let i=0;i<5;i++) {
+              if(card.parentElement) card=card.parentElement;
+              if(card.textContent.length>100) break;
+            }
+            const h = card.querySelector('h2,h3,h4,h5');
+            links.push({url:link.href, title:h?.textContent?.trim()||'Untitled'});
+          }
+        });
+        return links;
+      }
+
+      async function getFull(p) {
+        log(`   [${allPrompts.length+1}] ${p.title.substring(0,35)}...`);
+
+        // Open in new window instead of navigating
+        const win = window.open(p.url, '_blank');
+        await sleep(3000);
+
+        try {
+          const fullText = win.document.body.innerText;
+          const start = fullText.indexOf('ChatGPT Prompt');
+          if(start===-1) {
+            win.close();
+            return null;
+          }
+
+          const copyIdx = fullText.indexOf('Copy',start);
+          const howToIdx = fullText.indexOf('How To Use',start);
+          const exampleIdx = fullText.indexOf('Example Output',start);
+
+          const end = Math.min(
+            copyIdx!==-1?copyIdx:Infinity,
+            howToIdx!==-1?howToIdx:Infinity,
+            exampleIdx!==-1?exampleIdx:Infinity
+          );
+
+          if(end===Infinity) {
+            win.close();
+            return null;
+          }
+
+          let full = fullText.substring(start+13,end)
+            .trim()
+            .replace(/^Affiliate Script Creator\s*/gm,'')
+            .replace(/^\d+\.\s+/gm,'')
+            .replace(/\n{3,}/g,'\n\n')
+            .trim();
+
+          const t = win.document.querySelector('h1')?.textContent?.trim()||p.title;
+
+          win.close();
+          return {title:t,url:p.url,fullPromptText:full,chars:full.length};
+        } catch(e) {
+          log('      ❌ Error: ' + e.message);
+          try { win.close(); } catch {}
+          return null;
+        }
+      }
+
+      // Navigate to prompts page first
+      log('📍 Navigating to prompts page...\n');
+      window.location.href = 'https://www.godofprompt.ai/prompts?premium=false';
+      await sleep(4000);
+
+      let links = getLinks();
+      log(`📄 Page 1: Found ${links.length} prompts\n`);
+
+      for(let i=0;i<links.length;i++) {
+        const r = await getFull(links[i]);
+        if(r) {
+          allPrompts.push(r);
+          log(`      ✅ ${r.chars} chars\n`);
+        }
+
+        if((i+1)%3===0) {
+          downloadFile(`checkpoint_${allPrompts.length}.json`, allPrompts);
+          log('   💾 Checkpoint saved\n');
+        }
+      }
+
+      log('\n🔄 Moving to page 2...\n');
+
+      // Process remaining pages
+      for(let pg=2;pg<=100;pg++) {
+        if(!window.location.href.includes('/prompts?')) {
+          window.location.href='https://www.godofprompt.ai/prompts?premium=false';
+          await sleep(4000);
+        }
+
+        const next=[...document.querySelectorAll('a')].find(a=>a.textContent.trim()==='Next');
+        if(!next) {
+          log('✅ No more pages found!\n');
+          break;
+        }
+
+        next.click();
+        await sleep(3500);
+
+        const pageLinks=getLinks().filter(l=>!allPrompts.some(p=>p.url===l.url));
+        if(pageLinks.length===0) {
+          log('✅ No new prompts - extraction complete!\n');
+          break;
+        }
+
+        log(`📄 Page ${pg}: ${pageLinks.length} new prompts\n`);
+
+        for(let i=0;i<pageLinks.length;i++) {
+          const r=await getFull(pageLinks[i]);
+          if(r) {
+            allPrompts.push(r);
+            log(`      ✅ [${allPrompts.length}] ${r.title.substring(0,25)}... (${r.chars} chars)\n`);
+          }
+
+          if(allPrompts.length%10===0) {
+            downloadFile(`pg${pg}_${allPrompts.length}.json`, allPrompts);
+            log('   💾 Saved checkpoint\n');
+          }
+        }
+
+        if(allPrompts.length>=900) {
+          log('\n✅ Reached 900+ prompts!\n');
+          break;
+        }
+      }
+
+      // Final save
+      downloadFile(`ALL_PROMPTS_${allPrompts.length}_COMPLETE.json`, allPrompts);
+
+      log('\n' + '='.repeat(70));
+      log('✨ EXTRACTION COMPLETE!');
+      log(`📊 Total Prompts: ${allPrompts.length}`);
+      log('📁 Downloaded: ALL_PROMPTS_' + allPrompts.length + '_COMPLETE.json');
+      log('='.repeat(70));
+
+      statusDiv.innerHTML = '<span class="success">✅ COMPLETE! ' + allPrompts.length + ' prompts extracted</span>';
+
+      function downloadFile(filename, data) {
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+    })();
+  </script>
+</body>
+</html>
