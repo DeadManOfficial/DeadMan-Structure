@@ -45,6 +45,8 @@
 | **infosecn1nja/Red-Teaming-Toolkit** | `/toolkits/Red-Teaming-Toolkit` | Cutting-edge OST collection | HIGH |
 | **lcvvvv/kscan** | `/toolkits/kscan` | Port scanner, 1200+ protocols | HIGH |
 
+Note: Red-Teaming-Toolkit is synced from upstream and provides a categorized index of tools. See `/tools/blackout/toolkits/Red-Teaming-Toolkit/README.md`. Last sync: 2025-12-26.
+
 ---
 
 ### TIER 4: INTELLIGENCE DATABASES (ALL OPERATORS)
